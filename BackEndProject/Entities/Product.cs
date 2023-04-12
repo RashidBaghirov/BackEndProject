@@ -16,10 +16,10 @@ namespace BackEndProject.Entities
 		public int Stock { get; set; }
 		public string SKU { get; set; }
 		public int BarCode { get; set; }
-		public ICollection<ProductSizeColor>? ProductSizeColors { get; set; }
-		public ICollection<ProductImage> ProductImages { get; set; }
-		public ICollection<ProductTag> ProductTags { get; set; }
-		public ICollection<ProductCategory> ProductCategories { get; set; }
+		public List<ProductSizeColor>? ProductSizeColors { get; set; }
+		public List<ProductImage> ProductImages { get; set; }
+		public List<ProductTag> ProductTags { get; set; }
+		public List<ProductCategory> ProductCategories { get; set; }
 		public Collection Collections { get; set; }
 		public Instruction Instructions { get; set; }
 		public GlobalTab GlobalTab { get; set; }

@@ -4,6 +4,7 @@ using BackEndProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndProject.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    partial class ProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230412221809_ChangeColumn")]
+    partial class ChangeColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,7 +156,7 @@ namespace BackEndProject.Migrations
                     b.Property<decimal>("Discount")
                         .HasColumnType("decimal(6,2)");
 
-                    b.Property<decimal?>("DiscountPrice")
+                    b.Property<decimal>("DiscountPrice")
                         .HasColumnType("decimal(6,2)");
 
                     b.Property<int>("GlobalTabId")
