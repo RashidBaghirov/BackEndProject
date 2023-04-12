@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<Slider>
 
 <div class="page-content">
 	<!-- Main Slider -->
@@ -8,69 +9,55 @@
 		<div class="container">
 			<div class="bnslider-wrapper">
 				<div class="bnslider bnslider--lg keep-scale" id="bnslider-001" data-slick='{"arrows": true, "dots": true}' data-autoplay="false" data-speed="12000" data-start-width="1917" data-start-height="764" data-start-mwidth="1550" data-start-mheight="1000">
-					<div class="bnslider-slide">
-						<div class="bnslider-image-mobile lazyload" data-bgset="~/../assets/images/skins/fashion/slider/slide-fashion-02-m.png"></div>
-						<div class="bnslider-image lazyload" data-bgset="~/../assets/images/skins/fashion/slider/slide-fashion-02.png"></div>
-						<div class="bnslider-text-wrap bnslider-overlay ">
-							<div class="bnslider-text-content txt-middle txt-right txt-middle-m txt-center-m">
-								<div class="bnslider-text-content-flex ">
-									<div class="bnslider-vert w-s-60 w-ms-100" style="padding: 0px">
-										<div class="bnslider-text order-1 mt-sm bnslider-text--md text-center data-ini" data-animation="fadeInUp" data-animation-delay="800" data-fontcolor="#282828" data-fontweight="700" data-fontline="1.5">Best Price This Year</div>
-										<div class="bnslider-text order-2 mt-sm bnslider-text--xs text-center data-ini" data-animation="fadeInUp" data-animation-delay="1000" data-fontcolor="#7c7c7c" data-fontweight="400" data-fontline="1.5">eCommerce HTML Template</div>
-										<div class="btn-wrap text-center  order-4 mt-md" data-animation="fadeIn" data-animation-delay="2000" style="opacity: 1;">
-											<a href="https://bit.ly/3eJX5XE" target="_blank" class="btn">
-												Shop now
-											</a>
+					@foreach (var item in Model.Where(x=>x.IsVideo==false))
+					{
+						<div class="bnslider-slide">
+							<div class="bnslider-image-mobile lazyload" data-bgset="/assets/images/skins/fashion/slider/@item.ImagePath"></div>
+							<div class="bnslider-image lazyload" data-bgset="/assets/images/skins/fashion/slider/@item.ImagePath"></div>
+							<div class="bnslider-text-wrap bnslider-overlay ">
+								<div class="bnslider-text-content txt-middle txt-left txt-middle-m txt-center-m">
+									<div class="bnslider-text-content-flex ">
+										<div class="bnslider-vert w-s-60 w-ms-100" style="padding: 0px">
+											<div class="bnslider-text order-1 mt-0 bnslider-text--md text-center data-ini text-white" data-animation="fadeInUp" data-animation-delay="800" data-fontcolor="#282828" data-fontweight="700" data-fontline="1.5">@item.Title</div>
+											<div class="btn-wrap text-center  order-4 mt-md" data-animation="fadeIn" data-animation-delay="2000" style="opacity: 1;">
+												<a href="https://bit.ly/3eJX5XE" target="_blank" class="btn">
+													@item.Buttontitle
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="bnslider-slide">
-						<div class="bnslider-image-mobile lazyload" data-bgset="images/skins/fashion/slider/slide-fashion-01-m.png"></div>
-						<div class="bnslider-image lazyload" data-bgset="images/skins/fashion/slider/slide-fashion-01.png"></div>
-						<div class="bnslider-text-wrap bnslider-overlay ">
-							<div class="bnslider-text-content txt-middle txt-left txt-middle-m txt-center-m">
-								<div class="bnslider-text-content-flex ">
-									<div class="bnslider-vert w-s-60 w-ms-100" style="padding: 0px">
-										<div class="bnslider-text order-1 mt-0 bnslider-text--md text-center data-ini" data-animation="fadeInUp" data-animation-delay="800" data-fontcolor="#282828" data-fontweight="700" data-fontline="1.5">Best Rated Theme 2020</div>
-										<div class="bnslider-text order-2 mt-sm bnslider-text--xs text-center data-ini" data-animation="fadeInUp" data-animation-delay="1000" data-fontcolor="#7c7c7c" data-fontweight="400" data-fontline="1.5">eCommerce HTML Template</div>
-										<div class="btn-wrap text-center  order-4 mt-md" data-animation="fadeIn" data-animation-delay="2000" style="opacity: 1;">
-											<a href="https://bit.ly/3eJX5XE" target="_blank" class="btn">
-												Shop now
-											</a>
+					}
+					@foreach (var item in Model.Where(x=>x.IsVideo==true))
+					{
+						<div class="bnslider-slide slick-slide is-paused" data-autoplay="true" data-video-type="video" data-slick-index="2" aria-hidden="true" style="width: 1903px; position: relative; left: -3806px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease 0s;" id="slick-slide02">
+							<div class="video-wrap">
+								<video playsinline="" loop="" preload="auto">
+									<source src="@item.ImagePath" type="video/mp4">
+								</video>
+								<div class="video-control visible">
+									<div class="video-play js-video-slider-play"><i class="icon-play"></i></div>
+									<div class="video-stop js-video-slider-stop"><i class="icon-pause"></i></div>
+								</div>
+							</div>
+							<div class="bnslider-text-wrap bnslider-overlay ">
+								<div class="bnslider-text-content txt-middle txt-center txt-middle-m txt-center-m">
+									<div class="bnslider-text-content-flex ">
+										<div class="bnslider-vert " style="padding: 0px">
+											<div class="bnslider-text order-1 mt-sm bnslider-text--md text-center data-ini" data-animation="fadeInUp" data-animation-delay="800" data-fontcolor="#282828" data-fontweight="700" data-fontline="1.5">@item.Title</div>
+											<div class="btn-wrap text-center  order-4 mt-md" data-animation="fadeIn" data-animation-delay="2000" style="opacity: 1;">
+												<a href="~/../assets/#" target="_self" class="btn">
+													@item.Buttontitle
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="bnslider-slide slick-slide is-paused" data-autoplay="true" data-video-type="video" data-slick-index="2" aria-hidden="true" style="width: 1903px; position: relative; left: -3806px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease 0s;" id="slick-slide02">
-						<div class="video-wrap">
-							<video playsinline="" loop="" preload="auto">
-								<source src="https://cdn.shopify.com/s/files/1/0201/0942/6742/files/video-girl.mp4?v=1594287483" type="video/mp4">
-							</video>
-							<div class="video-control visible">
-								<div class="video-play js-video-slider-play"><i class="icon-play"></i></div>
-								<div class="video-stop js-video-slider-stop"><i class="icon-pause"></i></div>
-							</div>
-						</div>
-						<div class="bnslider-text-wrap bnslider-overlay ">
-							<div class="bnslider-text-content txt-middle txt-center txt-middle-m txt-center-m">
-								<div class="bnslider-text-content-flex ">
-									<div class="bnslider-vert " style="padding: 0px">
-										<div class="bnslider-text order-1 mt-sm bnslider-text--md text-center data-ini" data-animation="fadeInUp" data-animation-delay="800" data-fontcolor="#282828" data-fontweight="700" data-fontline="1.5">Live life in Comfort</div>
-										<div class="btn-wrap text-center  order-4 mt-md" data-animation="fadeIn" data-animation-delay="2000" style="opacity: 1;">
-											<a href="~/../assets/#" target="_self" class="btn">
-												Shop now
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					}
 				</div>
 				<div class="bnslider-arrows container-fluid">
 					<div></div>
@@ -84,23 +71,20 @@
 		<div class="container">
 			<div class="title-wrap text-center">
 				<h2 class="h1-style">Collections</h2>
-				<div class="title-wrap title-tabs-wrap text-center js-title-tabs">
+				<div class="title-wrap title-tabs-wrap text-center js-title-tabs ps ps--theme_default" data-ps-id="d1b69d8d-1bc7-b096-ba42-811d09f75c04">
 					<div class="title-tabs">
-						<h2 class="h3-style">
-							<a href="~/assets/ajax/ajax-product-tab-01.json" data-total="8" data-loaded="4" data-grid-tab-title><span class="title-tabs-text theme-font">Women</span></a>
+						<h2 class="h3-style active">
+							<a href="ajax/ajax-product-tab-01.json" data-total="8" data-loaded="4" data-grid-tab-title=""><span class="title-tabs-text theme-font">Women</span></a>
 						</h2>
 						<h2 class="h3-style">
-							<a href="~/assets/ajax/ajax-product-tab-02.json" data-total="8" data-loaded="4" data-grid-tab-title><span class="title-tabs-text theme-font">Men</span></a>
-						</h2>
-						<h2 class="h3-style">
-							<a href="~/assets/ajax/ajax-product-tab-03.json" data-total="8" data-loaded="4" data-grid-tab-title><span class="title-tabs-text theme-font">Accessories</span></a>
+							<a href="ajax/ajax-product-tab-02.json" data-total="8" data-loaded="4" data-grid-tab-title=""><span class="title-tabs-text theme-font">Men</span></a>
 						</h2>
 					</div>
 				</div>
 			</div>
 			<div class="prd-grid-wrap">
-				<div class="prd-grid data-to-show-4 data-to-show-md-3 data-to-show-sm-2 data-to-show-xs-2" data-grid-tab-content></div>
-				<div class="loader-horizontal-sm js-loader-horizontal-sm d-none" data-loader-horizontal style="opacity: 0;"><span></span></div>
+				<div class="loader-horizontal-sm js-loader-horizontal-sm d-none" data-loader-horizontal="" style="opacity: 0;"><span></span></div>
+		
 			</div>
 		</div>
 	</div>
@@ -109,7 +93,7 @@
 			<a href="https://bit.ly/3eJX5XE" target="_blank" class="bnr-wrap bnr-">
 				<div class="bnr custom-caption image-hover-scale bnr--middle bnr--right bnr--fullwidth">
 					<div class="bnr-img d-none d-sm-block image-container" style="padding-bottom: 41.36752136752137%">
-						<img src="~/../assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/../assets/images/skins/fashion/banner-fashion2-full.png" class="lazyload fade-up" alt="">
+						<img src="~/../assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/../assets/images/skins/fashion/1.png" class="lazyload fade-up" alt="">
 					</div>
 					<div class="bnr-img d-sm-none image-container" style="padding-bottom: 74.3139407244786%">
 						<img src="~/../assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/../assets/images/skins/fashion/banner-fashion2-full-m.png" class="lazyload fade-up" alt="">
@@ -139,7 +123,7 @@
 						<div class="prd-inside">
 							<div class="prd-img-area">
 								<a class="prd-img image-hover-scale image-container">
-									<img src="~/../assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/../assets/images/skins/fashion/products/product-03-1.jpg" alt="Oversized Cotton Blouse" class="js-prd-img lazyload fade-up">
+									<img src="~/assets/images/skins/fashion/product-page/2.png" alt="Oversized Cotton Blouse" class="js-prd-img lazyload fade-up">
 									<div class="foxic-loader"></div>
 									<div class="prd-big-squared-labels">
 										<div class="label-new"><span>New</span></div>
@@ -162,12 +146,24 @@
 								</div>
 
 								<ul class="list-options color-swatch">
-									<li data-image="images/skins/fashion/products/product-03-1.jpg" class="active"><a href="~/../assets/#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name"><img src="~/../assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/../assets/images/skins/fashion/products/product-03-1.jpg" class="lazyload fade-up" alt="Color Name"></a></li>
+									<li data-image="images/skins/fashion/product-page/3.png" class="active"><a href="~/../assets/#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Red">
+											<img src="https://htmlcolorcodes.com/assets/images/colors/dark-red-color-solid-background-1920x1080.png" class="lazyload fade-up" alt="Red">
+										</a></li>
 
-									<li data-image="images/skins/fashion/products/product-03-2.jpg"><a href="~/../assets/#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name"><img src="~/../assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/../assets/images/skins/fashion/products/product-03-2.jpg" class="lazyload fade-up" alt="Color Name"></a></li>
+									<li data-image="images/skins/fashion/product-page/1.png" class="active">
+										<a href="~/../assets/#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Blue">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Oxford_blue.png/220px-Oxford_blue.png" class="lazyload fade-up" alt="Blue">
+										</a>
+									</li>
 
 
-									<li data-image="images/skins/fashion/products/product-03-3.jpg"><a href="~/../assets/#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name"><img src="~/../assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/../assets/images/skins/fashion/products/product-03-3.jpg" class="lazyload fade-up" alt="Color Name"></a></li>
+
+									<li data-image="images/skins/fashion/product-page/4.png" class="active">
+										<a href="~/../assets/#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Black">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg" class="lazyload fade-up" alt="Black">
+										</a>
+									</li>
+
 
 
 

@@ -1,7 +1,9 @@
 
 
 using BackEndProject.DAL;
+using BackEndProject.Entities;
 using BackEndProject.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -18,17 +20,17 @@ builder.Services.AddDbContext<ProductDbContext>(opt =>
 	opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
 
-//builder.Services.AddIdentity<User, IdentityRole>(opt =>
-//{
-//    opt.Password.RequiredLength = 8;
-//    opt.Password.RequiredUniqueChars = 2;
-//    opt.Password.RequireNonAlphanumeric = false;
+builder.Services.AddIdentity<User, IdentityRole>(opt =>
+{
+	opt.Password.RequiredLength = 8;
+	opt.Password.RequiredUniqueChars = 2;
+	opt.Password.RequireNonAlphanumeric = false;
 
-//    opt.User.AllowedUserNameCharacters = "qwertyuiopasdfghjklzxcvbnm123456789_-";
+	opt.User.AllowedUserNameCharacters = "qwertyuiopasdfghjklzxcvbnm123456789_-";
 
-//    opt.Lockout.MaxFailedAccessAttempts = 5;
-//    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-//}).AddEntityFrameworkStores<ProniaDbContext>();
+	opt.Lockout.MaxFailedAccessAttempts = 5;
+	opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+}).AddEntityFrameworkStores<ProductDbContext>();
 
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
