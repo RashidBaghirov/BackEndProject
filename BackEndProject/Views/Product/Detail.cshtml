@@ -154,61 +154,58 @@
 							</div>
 						</div>
 						<div class="order-0 order-md-100">
-							<form method="post" action="#">
-								<div class="prd-block_options">
-									<div class="prd-color swatches">
+							<form method="post" asp-controller="Order" asp-action="AddBaskets" asp-route-productId="@Model.Id">
+							<div class="prd-block_options">
+												<div class="prd-color swatches">
 										<div class="option-label">Color:</div>
-										<select class="form-control hidden single-option-selector-modalQuickView" id="SingleOptionSelector-0" data-index="option1">
-											<option value="Beige" selected="selected">Beige</option>
-											<option value="Black">Black</option>
-											<option value="Red">Red</option>
+										<select asp-for="AddCart.ColorId" asp-items="@(new SelectList(ViewBag.Colors,"Id","Name"))" class="form-control   single-option-selector-modalQuickView" id="SingleOptionSelector-0" data-index="option1">
+			
 										</select>
-										<ul class="images-list js-size-list" data-select-id="SingleOptionSelector-0">
+										<ul class="images-list js-color-list" data-select-id="SingleOptionSelector-0">
 											@foreach (ProductSizeColor color in Model.ProductSizeColors)
 											{
-												<li class="active">
-													<a href="~/../assets/#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="@color.Color.Name">
-														<img src="@color.Color.ColorPath" class="lazyload fade-up" alt="@color.Color.Name">
+												<li class="js-color-item" data-value="@color.Color.Id">
+													<a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="@color.Color.Name" data-color-id="@color.Color.Id">
+													  <img src="@color.Color.ColorPath" class="lazyload fade-up" alt="@color.Color.Name">
 													</a>
+
 												</li>
 											}
 										</ul>
 									</div>
 									<div class="prd-size swatches">
 										<div class="option-label">Size:</div>
-										<select class="form-control hidden single-option-selector-modalQuickView" id="SingleOptionSelector-1" data-index="option2">
-										@foreach (ProductSizeColor size in Model.ProductSizeColors)
+										<select asp-for="AddCart.SizeId" asp-items="@(new SelectList(ViewBag.Sizes,"Id","Name"))" class="form-control   single-option-selector-modalQuickView" id="SingleOptionSelector-1" data-index="option2">
+											@foreach (ProductSizeColor size in Model.ProductSizeColors)
 											{
-													<option value="Small" selected="selected">@size.Size.Name</option>
-										
+												<option value="@size.Size.Id">@size.Size.Name</option>
 											}
 										</select>
 										<ul class="size-list js-size-list" data-select-id="SingleOptionSelector-1">
 											@foreach (ProductSizeColor size in Model.ProductSizeColors)
 											{
-											<li class="active"><a href="#" data-value="Small"><span class="value">@size.Size.Name</span></a></li>
-												
+												<li class="js-size-item" data-value="@size.Size.Id"><a href="#" data-value="@size.Size.Id"><span class="value">@size.Size.Name</span></a></li>
 											}
-											
 										</ul>
 									</div>
-								</div>
+							    </div>
 								<div class="prd-block_actions prd-block_actions--wishlist">
 									<div class="prd-block_qty">
 										<div class="qty qty-changer">
 											<button class="decrease js-qty-button"></button>
-											<input type="number" class="qty-input" name="quantity" value="1" data-min="1" data-max="1000">
+											<input asp-for="AddCart.Quantity" type="number" class="qty-input js-qty-input"  value="1"  data-max="1000">
 											<button class="increase js-qty-button"></button>
 										</div>
 									</div>
 									<div class="btn-wrap">
-										<button class="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart" data-product='{"name":  "Leather Pegged Pants ",  "url ": "product.html",  "path ": "images/skins/fashion/product-page/product-01.jpg",  "aspect_ratio ": "0.78"}'>Add to cart</button>
+										<button asp-controller="Order" asp-action="AddBasket" asp-route-id="@Model.Id" class="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart" type="submit">Add to cart</button>
 									</div>
 									<div class="btn-wishlist-wrap">
 										<a href="#" class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--add js-add-wishlist" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
 										<a href="#" class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--off js-remove-wishlist" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
 									</div>
-								</div>
+								</div
+
 							</form>
 							<div class="prd-block_agreement prd-block_info_item order-0 order-md-100 text-right" data-agree>
 								<input id="agreementCheckboxProductPage" class="js-agreement-checkbox" data-button=".shopify-payment-agree" name="agreementCheckboxProductPage" type="checkbox">
@@ -572,3 +569,22 @@
 		</div>
 	</div>
 </div>
+
+
+@section Script{
+<script>
+$(document).ready(function () {
+  $(".js-color-toggle").click(function () {
+    var colorId = $(this).data("color-id");
+    var optionSelector = $(this).closest(".prd-color").find("select");
+    optionSelector.val(colorId).change();
+    changeColor($(this));
+  });
+});
+
+function changeColor($element) {
+  $element.closest("ul").find("li").removeClass("active");
+  $element.closest("li").addClass("active");
+}
+</script>
+			}

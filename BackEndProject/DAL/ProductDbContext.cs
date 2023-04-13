@@ -26,6 +26,12 @@ namespace BackEndProject.DAL
 		public DbSet<ProductCategory> ProductCategories { get; set; }
 		public DbSet<Setting> Settings { get; set; }
 		public DbSet<Slider> Sliders { get; set; }
+		public DbSet<Basket> Baskets { get; set; }
+
+		public DbSet<BasketItem> BasketItems { get; set; }
+		public DbSet<Order> Orders { get; set; }
+
+
 
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

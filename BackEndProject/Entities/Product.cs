@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BackEndProject.ViewModel.Addcart;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEndProject.Entities
 {
@@ -24,12 +26,15 @@ namespace BackEndProject.Entities
 		public Instruction Instructions { get; set; }
 		public GlobalTab GlobalTab { get; set; }
 
+		[NotMapped]
+		public AddCartVM AddCart { get; set; }
+
 		public Product()
 		{
-			ProductImages = new List<ProductImage>();
-			ProductTags = new List<ProductTag>();
-			ProductCategories = new List<ProductCategory>();
-			ProductSizeColors = new List<ProductSizeColor>();
+			ProductImages = new();
+			ProductTags = new();
+			ProductCategories = new();
+			ProductSizeColors = new();
 		}
 	}
 }

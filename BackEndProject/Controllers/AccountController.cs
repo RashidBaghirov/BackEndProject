@@ -92,12 +92,84 @@ namespace BackEndProject.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 
+
+
+
 		//public async Task CreateRoles()
 		//{
 		//	await _roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
 		//	await _roleManager.CreateAsync(new IdentityRole(Roles.Moderator.ToString()));
 		//	await _roleManager.CreateAsync(new IdentityRole(Roles.User.ToString()));
 		//}
+
+
+
+		public async Task<IActionResult> Details()
+		{
+			User user = await _usermanager.FindByNameAsync(User.Identity.Name);
+			if (user is null)
+			{
+				return RedirectToAction(nameof(Login));
+			}
+			ProfileVM profileVM = new ProfileVM
+			{
+				Email = user.Email,
+				UserName = user.UserName,
+				FullName = user.FullName
+			};
+
+			return View(profileVM);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Details(ProfileVM profileVM)
+		{
+			if (!ModelState.IsValid) return View();
+
+			User member = await _usermanager.FindByNameAsync(User.Identity.Name);
+
+			if (!string.IsNullOrWhiteSpace(profileVM.ConfirmNewPassword) && !string.IsNullOrWhiteSpace(profileVM.NewPassword))
+			{
+				var passwordChangeResult = await _usermanager.ChangePasswordAsync(member, profileVM.CurrentPassword, profileVM.NewPassword);
+
+				if (!passwordChangeResult.Succeeded)
+				{
+					foreach (var item in passwordChangeResult.Errors)
+					{
+						ModelState.AddModelError("", item.Description);
+					}
+
+					return View();
+				}
+
+			}
+
+			if (member.Email != profileVM.Email && _usermanager.Users.Any(x => x.NormalizedEmail == profileVM.Email.ToUpper()))
+			{
+				ModelState.AddModelError("Email", "This email has already been taken!");
+				return View();
+			}
+			member.Email = profileVM.Email;
+			member.UserName = profileVM.UserName;
+
+
+			var result = await _usermanager.UpdateAsync(member);
+
+			if (!result.Succeeded)
+			{
+				foreach (var item in result.Errors)
+				{
+					ModelState.AddModelError("", item.Description);
+				}
+
+				return View();
+			}
+			await _signInManager.SignOutAsync();
+			return RedirectToAction(nameof(Login));
+		}
+
+
+
 	}
 
 }

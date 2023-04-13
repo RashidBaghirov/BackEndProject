@@ -22,6 +22,59 @@ namespace BackEndProject.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("BackEndProject.Entities.Basket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("IsOrdered")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Baskets");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.BasketItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BasketId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductSizeColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SaleQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
+
+                    b.HasIndex("ProductSizeColorId");
+
+                    b.ToTable("BasketItems");
+                });
+
             modelBuilder.Entity("BackEndProject.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -131,6 +184,34 @@ namespace BackEndProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Instructions");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BasketId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DeliveredDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("RequiredDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId")
+                        .IsUnique();
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("BackEndProject.Entities.Product", b =>
@@ -410,7 +491,6 @@ namespace BackEndProject.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -592,6 +672,45 @@ namespace BackEndProject.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("BackEndProject.Entities.Basket", b =>
+                {
+                    b.HasOne("BackEndProject.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.BasketItem", b =>
+                {
+                    b.HasOne("BackEndProject.Entities.Basket", "Basket")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackEndProject.Entities.ProductSizeColor", "ProductSizeColor")
+                        .WithMany()
+                        .HasForeignKey("ProductSizeColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+
+                    b.Navigation("ProductSizeColor");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.Order", b =>
+                {
+                    b.HasOne("BackEndProject.Entities.Basket", "Basket")
+                        .WithOne("Order")
+                        .HasForeignKey("BackEndProject.Entities.Order", "BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+                });
+
             modelBuilder.Entity("BackEndProject.Entities.Product", b =>
                 {
                     b.HasOne("BackEndProject.Entities.Collection", "Collections")
@@ -743,6 +862,14 @@ namespace BackEndProject.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.Basket", b =>
+                {
+                    b.Navigation("BasketItems");
+
+                    b.Navigation("Order")
                         .IsRequired();
                 });
 

@@ -50,10 +50,13 @@ namespace BackEndProject.Controllers
 							  .Include(p => p.Collections)
 							  .AsSingleQuery()
 							  .FirstOrDefault(p => p.Id == id);
-			ViewBag.Products = RelatedProduct.Related(products, product, id);
+			ViewBag.Products = ExtensionMethods.Related(products, product, id);
+			ViewBag.Colors = _context.Colors.ToList();
+			ViewBag.Sizes = _context.Sizes.ToList();
 			if (product is null) return NotFound();
 			return View(product);
 		}
+
 
 
 	}
