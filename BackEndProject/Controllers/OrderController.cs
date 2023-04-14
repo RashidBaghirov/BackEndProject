@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using P230_Pronia.ViewModels.Cookies;
 
 namespace BackEndProject.Controllers
 {
@@ -18,6 +19,9 @@ namespace BackEndProject.Controllers
 			_context = context;
 			_userManager = userManager;
 		}
+
+
+
 		[HttpPost]
 		public async Task<IActionResult> AddBaskets(int productId, Product basketProduct)
 		{
@@ -61,33 +65,33 @@ namespace BackEndProject.Controllers
 			Product product = _context.Products.FirstOrDefault(p => p.Id == id);
 			if (product is null) return NotFound();
 			var cookies = HttpContext.Request.Cookies["basket"];
-			BasketVM basket = new();
+			CookiesBasketVM basket = new();
 			if (cookies is null)
 			{
-				BasketItemVM item = new BasketItemVM
+				CookiesBasketItemVM item = new CookiesBasketItemVM
 				{
 					Id = product.Id,
 					Price = product.Price,
 					Quantity = 1
 
 				};
-				basket.BasketItemVMs.Add(item);
+				basket.CookiesBasketItems.Add(item);
 				basket.TotalPrice = product.Price;
 			}
 			else
 			{
-				basket = JsonConvert.DeserializeObject<BasketVM>(cookies);
-				BasketItemVM existed = basket.BasketItemVMs.Find(c => c.Id == id);
+				basket = JsonConvert.DeserializeObject<CookiesBasketVM>(cookies);
+				CookiesBasketItemVM existed = basket.CookiesBasketItems.Find(c => c.Id == id);
 				if (existed is null)
 				{
-					BasketItemVM newitem = new BasketItemVM
+					CookiesBasketItemVM newitem = new CookiesBasketItemVM
 					{
 						Id = product.Id,
 						Price = product.Price,
 						Quantity = 1
 
 					};
-					basket.BasketItemVMs.Add(newitem);
+					basket.CookiesBasketItems.Add(newitem);
 					basket.TotalPrice += newitem.Price;
 
 				}
@@ -102,7 +106,6 @@ namespace BackEndProject.Controllers
 			HttpContext.Response.Cookies.Append("basket", basketstr);
 			return RedirectToAction("Index", "Home");
 		}
-
 		public IActionResult RemoveBasketItem(int id)
 		{
 			var cookies = HttpContext.Request.Cookies["basket"];

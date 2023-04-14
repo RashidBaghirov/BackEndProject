@@ -437,9 +437,6 @@ namespace BackEndProject.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsVideo")
-                        .HasColumnType("bit");
-
                     b.Property<byte?>("Order")
                         .HasColumnType("tinyint");
 

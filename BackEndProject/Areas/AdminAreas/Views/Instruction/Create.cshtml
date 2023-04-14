@@ -1,0 +1,39 @@
+﻿@model BackEndProject.Entities.Instruction
+
+<h4>Instruction</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="QualityDetails" class="control-label"></label>
+                <input asp-for="QualityDetails" class="form-control" />
+                <span asp-validation-for="QualityDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lining" class="control-label"></label>
+                <input asp-for="Lining" class="form-control" />
+                <span asp-validation-for="Lining" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Clean" class="control-label"></label>
+                <input asp-for="Clean" class="form-control" />
+                <span asp-validation-for="Clean" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Only" class="control-label"></label>
+                <input asp-for="Only" class="form-control" />
+                <span asp-validation-for="Only" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

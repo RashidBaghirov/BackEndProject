@@ -51,8 +51,8 @@ namespace BackEndProject.Controllers
 							  .AsSingleQuery()
 							  .FirstOrDefault(p => p.Id == id);
 			ViewBag.Products = ExtensionMethods.Related(products, product, id);
-			ViewBag.Colors = _context.Colors.ToList();
-			ViewBag.Sizes = _context.Sizes.ToList();
+			ViewBag.Colors = _context.Colors.Distinct().ToList();
+			ViewBag.Sizes = _context.Sizes.Distinct().ToList();
 			if (product is null) return NotFound();
 			return View(product);
 		}

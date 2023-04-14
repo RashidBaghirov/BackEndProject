@@ -1,6 +1,8 @@
-﻿@inject BackEndProject.Services.LayoutService layoutService
+﻿@using P230_Pronia.ViewModels.Cookies;
+@inject BackEndProject.Services.LayoutService layoutService
 @{
 	Dictionary<string, string> settings = layoutService.GetSettings();
+	CookiesBasketVM baskets=layoutService.GetBasket();
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -423,8 +425,8 @@
 								<div class="dropdn dropdn_fullheight minicart">
 									<a href="~/assets/#" class="dropdn-link js-dropdn-link minicart-link" data-panel="#dropdnMinicart">
 										<i class="icon-basket"></i>
-										<span class="minicart-qty">3</span>
-										<span class="minicart-total hide-mobile">$34.99</span>
+										<span class="minicart-qty">@(baskets is null ? "0" : baskets.CookiesBasketItems.Count)</span>
+										<span class="minicart-total hide-mobile">$@baskets.TotalPrice</span>
 									</a>
 								</div>
 							</div>
@@ -460,40 +462,31 @@
 			<div class="dropdn-content-block">
 				<div class="dropdn-close"><span class="js-dropdn-close">Close</span></div>
 				<div class="minicart-drop-content js-dropdn-content-scroll">
-					<div class="minicart-prd row">
-						<div class="minicart-prd-image image-hover-scale-circle col">
-							<a href="~/assets/product.html"><img class="lazyload fade-up" src="~/assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/assets/images/skins/fashion/products/product-01-1.jpg" alt=""></a>
-						</div>
-						<div class="minicart-prd-info col">
-							<div class="minicart-prd-tag">FOXic</div>
-							<h2 class="minicart-prd-name"><a href="~/assets/#">Leather Pegged Pants</a></h2>
-							<div class="minicart-prd-qty"><span class="minicart-prd-qty-label">Quantity:</span><span class="minicart-prd-qty-value">1</span></div>
-							<div class="minicart-prd-price prd-price">
-								<div class="price-old">$200.00</div>
-								<div class="price-new">$180.00</div>
+					@foreach (var item in baskets.CookiesBasketItems)
+					{
+						Product? products = layoutService.GetProducts().FirstOrDefault(p => p.Id == item.Id);
+						if (products is not null)
+						{
+							<div class="minicart-prd row">
+								<div class="minicart-prd-image image-hover-scale-circle col">
+									<a href="~/assets/product.html"><img src="~/assets/images/skins/fashion/product-page/@products.ProductImages.FirstOrDefault(x=>x.IsMain==true)?.Path" class="lazyload fade-up"  alt=""></a>
+								</div>
+								<div class="minicart-prd-info col">
+									<div class="minicart-prd-tag">FOXic</div>
+									<h2 class="minicart-prd-name"><a href="~/assets/#">@products.Name</a></h2>
+									<div class="minicart-prd-qty"><span class="minicart-prd-qty-label">Quantity:</span><span class="minicart-prd-qty-value">1</span></div>
+									<div class="minicart-prd-price prd-price">
+										<div class="price-old">$@products.Price</div>
+										<div class="price-new">$@products.DiscountPrice</div>
+									</div>
+								</div>
+								<div class="minicart-prd-action">
+									<a asp-controller="Order" asp-action="RemoveBasketItem" class="product-remove" data-line-number="1"><i class="icon-recycle"></i></a>
+								</div>
 							</div>
-						</div>
-						<div class="minicart-prd-action">
-							<a href="~/assets/#" class="js-product-remove" data-line-number="1"><i class="icon-recycle"></i></a>
-						</div>
-					</div>
-					<div class="minicart-prd row">
-						<div class="minicart-prd-image image-hover-scale-circle col">
-							<a href="~/assets/product.html"><img class="lazyload fade-up" src="~/assets/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="~/assets/images/skins/fashion/products/product-16-1.jpg" alt=""></a>
-						</div>
-						<div class="minicart-prd-info col">
-							<div class="minicart-prd-tag">FOXic</div>
-							<h2 class="minicart-prd-name"><a href="~/assets/#">Cascade Casual Shirt</a></h2>
-							<div class="minicart-prd-qty"><span class="minicart-prd-qty-label">Quantity:</span><span class="minicart-prd-qty-value">1</span></div>
-							<div class="minicart-prd-price prd-price">
-								<div class="price-old">$200.00</div>
-								<div class="price-new">$180.00</div>
-							</div>
-						</div>
-						<div class="minicart-prd-action">
-							<a href="~/assets/#" class="js-product-remove" data-line-number="2"><i class="icon-recycle"></i></a>
-						</div>
-					</div>
+						}
+					}
+					
 					<div class="minicart-empty js-minicart-empty d-none">
 						<div class="minicart-empty-text">Your cart is empty</div>
 						<div class="minicart-empty-icon">
@@ -526,7 +519,7 @@
 					<div class="loader-horizontal-sm js-loader-horizontal-sm" data-loader-horizontal=""><span></span></div>
 					<div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center">
 						<div class="minicart-drop-total-txt col-auto heading-font">Subtotal</div>
-						<div class="minicart-drop-total-price col" data-header-cart-total="">$340</div>
+						<div class="minicart-drop-total-price col" data-header-cart-total="">$@baskets.TotalPrice</div>
 					</div>
 					<div class="minicart-drop-actions">
 						<a href="~/assets/cart.html" class="btn btn--md btn--grey"><i class="icon-basket"></i><span>Cart Page</span></a>
