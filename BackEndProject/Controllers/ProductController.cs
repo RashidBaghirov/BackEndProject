@@ -14,52 +14,64 @@ using System.Numerics;
 
 namespace BackEndProject.Controllers
 {
-	public class ProductController : Controller
-	{
-		private readonly ProductDbContext _context;
+    public class ProductController : Controller
+    {
+        private readonly ProductDbContext _context;
 
-		public ProductController(ProductDbContext context)
-		{
-			_context = context;
-		}
-		public IActionResult Index(int page = 1)
-		{
+        public ProductController(ProductDbContext context)
+        {
+            _context = context;
+        }
+        public IActionResult Index(int page = 1)
+        {
 
-			ViewBag.TotalPage = Math.Ceiling((double)_context.Products.Count() / 6);
-			ViewBag.CurrentPage = page;
-			ViewBag.Products = _context.Products.Include(p => p.ProductImages)
-													   .Include(p => p.ProductSizeColors).ThenInclude(p => p.Color).Include(c => c.Collections)
-														.AsNoTracking().Skip((page - 1) * 6).Take(6).ToList();
+            ViewBag.TotalPage = Math.Ceiling((double)_context.Products.Count() / 6);
+            ViewBag.CurrentPage = page;
+            ViewBag.Products = _context.Products.Include(p => p.ProductImages)
+                                                       .Include(p => p.ProductSizeColors).ThenInclude(p => p.Color).Include(c => c.Collections)
+                                                        .AsNoTracking().Skip((page - 1) * 6).Take(6).ToList();
 
-			return View();
-		}
-
-
-
-		public IActionResult Detail(int id)
-		{
-			if (id <= 0) return NotFound();
-			IQueryable<Product> products = _context.Products.AsNoTracking().AsQueryable();
-
-			Product? product = products
-							  .Include(p => p.ProductImages)
-							  .Include(p => p.ProductSizeColors).ThenInclude(p => p.Size)
-							  .Include(p => p.ProductSizeColors).ThenInclude(p => p.Color)
-							  .Include(p => p.Instructions).
-							  Include(p => p.GlobalTab)
-							  .Include(p => p.ProductTags).ThenInclude(cu => cu.Tag)
-							  .Include(p => p.ProductCategories)
-							  .ThenInclude(pt => pt.Category)
-							  .Include(p => p.Collections)
-							  .AsSingleQuery()
-							  .FirstOrDefault(p => p.Id == id);
-			ViewBag.Products = ExtensionMethods.Related(products, product, id);
-			ViewBag.Colors = _context.Colors.Distinct().ToList();
-			ViewBag.Sizes = _context.Sizes.Distinct().ToList();
-			if (product is null) return NotFound();
-			return View(product);
-		}
+            return View();
+        }
 
 
-	}
+
+        public IActionResult Detail(int id)
+        {
+            if (id <= 0) return NotFound();
+            IQueryable<Product> products = _context.Products.AsNoTracking().AsQueryable();
+
+            Product? product = products
+                              .Include(p => p.ProductImages)
+                              .Include(p => p.ProductSizeColors).ThenInclude(p => p.Size)
+                              .Include(p => p.ProductSizeColors).ThenInclude(p => p.Color)
+                              .Include(p => p.Instructions).
+                              Include(p => p.GlobalTab)
+                              .Include(p => p.ProductTags).ThenInclude(cu => cu.Tag)
+                              .Include(p => p.ProductCategories)
+                              .ThenInclude(pt => pt.Category)
+                              .Include(p => p.Collections)
+                              .AsSingleQuery()
+                              .FirstOrDefault(p => p.Id == id);
+            ViewBag.Products = ExtensionMethods.Related(products, product, id);
+            ViewBag.Colors = _context.ProductSizeColors
+                          .Where(psc => psc.ProductId == id)
+                          .Select(psc => psc.Color)
+                          .Distinct()
+                          .Select(c => new { Id = c.Id, Name = c.Name })
+                          .ToList();
+
+            ViewBag.Sizes = _context.ProductSizeColors
+                             .Where(psc => psc.ProductId == id)
+                             .Select(psc => psc.Size)
+                             .Distinct()
+                             .Select(s => new { Id = s.Id, Name = s.Name })
+                             .ToList();
+
+            if (product is null) return NotFound();
+            return View(product);
+        }
+
+
+    }
 }

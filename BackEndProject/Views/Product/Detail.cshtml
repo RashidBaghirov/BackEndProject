@@ -154,11 +154,11 @@
 							</div>
 						</div>
 						<div class="order-0 order-md-100">
-							<form method="post" asp-action="AddBaskets" asp-route-productId="@Model.Id">
+							<form method="post" asp-controller="order" asp-action="AddBaskets" asp-route-productId="@Model.Id">
 							<div class="prd-block_options">
 												<div class="prd-color swatches">
 										<div class="option-label">Color:</div>
-										<select asp-for="AddCart.ColorId" asp-items="@(new SelectList(ViewBag.Colors,"Id","Name"))" class="form-control hidden single-option-selector-modalQuickView" id="SingleOptionSelector-0" data-index="option1">
+										<select asp-for="AddCart.ColorId" asp-items="@(new SelectList(ViewBag.Colors,"Id","Name"))" class="form-control  single-option-selector-modalQuickView" id="SingleOptionSelector-0" data-index="option1">
 			
 										</select>
 										<ul class="images-list js-color-list" data-select-id="SingleOptionSelector-0">
@@ -175,7 +175,7 @@
 									</div>
 									<div class="prd-size swatches">
 										<div class="option-label">Size:</div>
-										<select asp-for="AddCart.SizeId" asp-items="@(new SelectList(ViewBag.Sizes,"Id","Name"))" class="form-control hidden single-option-selector-modalQuickView" id="SingleOptionSelector-1" data-index="option2">
+										<select asp-for="AddCart.SizeId" asp-items="@(new SelectList(ViewBag.Sizes,"Id","Name"))" class="form-control  single-option-selector-modalQuickView" id="SingleOptionSelector-1" data-index="option2">
 											@foreach (ProductSizeColor size in Model.ProductSizeColors)
 											{
 												<option value="@size.Size.Id">@size.Size.Name</option>
