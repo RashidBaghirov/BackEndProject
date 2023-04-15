@@ -1,11 +1,13 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Entities;
+using BackEndProject.Utilities.Enum;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEndProject.Areas.AdminAreas.Controllers
 {
-
 	[Area("AdminAreas")]
+	[Authorize(Roles = "Admin,Moderator")]
 	public class CategoryController : Controller
 	{
 		private readonly ProductDbContext _context;

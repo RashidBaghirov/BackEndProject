@@ -2,9 +2,12 @@
 using BackEndProject.Entities;
 using BackEndProject.Utilities.Comparer;
 using BackEndProject.Utilities.Extension;
+using BackEndProject.ViewModel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
@@ -56,7 +59,6 @@ namespace BackEndProject.Controllers
 			if (product is null) return NotFound();
 			return View(product);
 		}
-
 
 
 	}

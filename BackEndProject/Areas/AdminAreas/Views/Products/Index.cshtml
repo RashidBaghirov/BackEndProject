@@ -83,7 +83,9 @@
                     @foreach (var colorSize in item.ProductSizeColors)
                     {
                         <div>
-                            @colorSize.Size.Name => @colorSize.Color.Name ===> @colorSize.Quantity
+                            <span>@colorSize.Size.Name</span> -
+                            <img style="width:15px;height:15px;object-fit:contain" src="~/assets/images/skins/fashion/product-page/@colorSize.Color.ColorPath" alt="@colorSize.Color.Name">
+                            -<span>@colorSize.Quantity</span>
                         </div>
                     }
                 </td>

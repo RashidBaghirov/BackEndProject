@@ -120,6 +120,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/resid/OneDrive/Desktop/BackEndProject/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/resid/OneDrive/Desktop/BackEndProject/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/resid/OneDrive/Desktop/BackEndProject/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -230,6 +238,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/resid/OneDrive/Desktop/BackEndProject/BackEndProject/BackEndProject/BackEndProject/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/resid/OneDrive/Desktop/BackEndProject/BackEndProject/BackEndProject/BackEndProject/Views/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/resid/OneDrive/Desktop/BackEndProject/BackEndProject/BackEndProject/BackEndProject/Views/Home/Index.cshtml]

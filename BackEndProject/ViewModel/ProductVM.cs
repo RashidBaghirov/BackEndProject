@@ -34,7 +34,7 @@ namespace BackEndProject.ViewModel
         [NotMapped]
         public ICollection<ProductImage>? AllImages { get; set; }
         [NotMapped]
-        public ICollection<int>? ImagesId { get; set; }
+        public List<int>? ImagesId { get; set; }
         [NotMapped]
         public string? ColorsSizesQuantity { get; set; }
         public string? ProductSizeColorDelete { get; set; }

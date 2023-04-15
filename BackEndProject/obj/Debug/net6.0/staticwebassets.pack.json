@@ -245,8 +245,8 @@
       "PackagePath": "staticwebassets\\admin\\assets\\images\\logo-mini.svg"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\admin\\assets\\images\\logo.svg",
-      "PackagePath": "staticwebassets\\admin\\assets\\images\\logo.svg"
+      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\admin\\assets\\images\\logo.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\logo.png"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\admin\\assets\\js\\.DS_Store",
@@ -799,10 +799,6 @@
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\fonts\\montserrat\\style.css",
       "PackagePath": "staticwebassets\\assets\\fonts\\montserrat\\style.css"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\4881-1-310x220.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\4881-1-310x220.jpg"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\5811-1.jpg",
@@ -2261,10 +2257,6 @@
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\16.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\1691-1-310x220.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\1691-1-310x220.jpg"
-    },
-    {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\17.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\17.png"
     },
@@ -2293,10 +2285,6 @@
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\22.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\2221-1-570x633.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\2221-1-570x633.jpg"
-    },
-    {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\23.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\23.png"
     },
@@ -2311,10 +2299,6 @@
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\26.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\26.png"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\2661-1-524x617.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\2661-1-524x617.png"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\27.png",
@@ -2341,10 +2325,6 @@
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\31.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\3191-2-270x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\3191-2-270x300.jpg"
-    },
-    {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\32.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\32.png"
     },
@@ -2361,10 +2341,6 @@
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\35.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\3501--1rnu4p.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\3501--1rnu4p.png"
-    },
-    {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\36.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\36.png"
     },
@@ -2373,20 +2349,8 @@
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\37.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\3751--1rnu4p.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\3751--1rnu4p.png"
-    },
-    {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\38.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\38.png"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\3881-1-270x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\3881-1-270x300.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\3881-2-310x220.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\3881-2-310x220.jpg"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\39.png",
@@ -2417,10 +2381,6 @@
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\44.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\4441-3-570x633.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\4441-3-570x633.jpg"
-    },
-    {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\45.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\45.png"
     },
@@ -2441,88 +2401,36 @@
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\5.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\5001-1-310x220.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\5001-1-310x220.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\5321-1-310x220.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\5321-1-310x220.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\541-1.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\541-1.png"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\5571-1-770x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\5571-1-770x300.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\5581-1-270x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\5581-1-270x300.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\5691-2-370x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\5691-2-370x300.jpg"
-    },
-    {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\6.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\6.png"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\601-1-524x617.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\601-1-524x617.png"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\6301-1-310x220.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\6301-1-310x220.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\6991-1-310x220.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\6991-1-310x220.jpg"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\7.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\7.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\7271-4-770x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\7271-4-770x300.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\7361-1-770x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\7361-1-770x300.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\7511-1-524x617.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\7511-1-524x617.png"
+      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\74013.png",
+      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\74013.png"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\8.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\8.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\8201--1rnu4p.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\8201--1rnu4p.png"
+      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\8541.png",
+      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\8541.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\8491-1-270x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\8491-1-270x300.jpg"
+      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\8664.png",
+      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\8664.png"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\9.png",
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\9.png"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\9311-2-370x300.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\9311-2-370x300.jpg"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\9361-1-524x617.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\9361-1-524x617.png"
-    },
-    {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\9541-1-570x633.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\9541-1-570x633.jpg"
+      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\9685.png",
+      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\9685.png"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\9911-2.png",
@@ -2541,8 +2449,8 @@
       "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\product-video.mp4"
     },
     {
-      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\red.png.png",
-      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\red.png.png"
+      "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\product-page\\red.png",
+      "PackagePath": "staticwebassets\\assets\\images\\skins\\fashion\\product-page\\red.png"
     },
     {
       "Id": "C:\\Users\\resid\\OneDrive\\Desktop\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject\\wwwroot\\assets\\images\\skins\\fashion\\products\\1.png",

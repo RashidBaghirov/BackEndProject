@@ -550,3 +550,8 @@ C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\Bac
 C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\BackEndProject\obj\Debug\net6.0\BackEndProject.pdb
 C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\BackEndProject\obj\Debug\net6.0\BackEndProject.genruntimeconfig.cache
 C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\BackEndProject\obj\Debug\net6.0\ref\BackEndProject.dll
+C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\BackEndProject\bin\Debug\net6.0\MailKit.dll
+C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\BackEndProject\bin\Debug\net6.0\MimeKit.dll
+C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\BackEndProject\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\BackEndProject\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\resid\OneDrive\Desktop\BackEndProject\BackEndProject\BackEndProject\BackEndProject\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll

@@ -1,4 +1,5 @@
 ﻿using BackEndProject.Entities;
+using BackEndProject.Services;
 using BackEndProject.Utilities.Enum;
 using BackEndProject.ViewModel.Register_and_Login;
 using Microsoft.AspNetCore.Identity;
@@ -30,7 +31,6 @@ namespace BackEndProject.Controllers
 			if (!ModelState.IsValid) return View();
 			if (!account.Terms)
 			{
-
 				ModelState.AddModelError("Terms", "Please click Terms button");
 				return View();
 			}
@@ -51,9 +51,17 @@ namespace BackEndProject.Controllers
 				}
 				return View();
 			}
+
+			//// Send welcome email to the user
+			//string subject = "Welcome to our website!";
+			//string body = $"Dear {user.FullName},<br><br>Welcome to our website! We are glad you joined us.";
+			//_emailService.Send(user.Email, subject, body);
+
 			await _usermanager.AddToRoleAsync(user, Roles.User.ToString());
 			return RedirectToAction("Index", "Home");
 		}
+
+
 
 		public IActionResult Login()
 		{

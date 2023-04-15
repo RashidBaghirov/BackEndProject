@@ -22,7 +22,7 @@
                 @Html.DisplayFor(modelItem => item.Key)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Value)
+                    @(item.Value.Length > 35 ? string.Concat(item.Value.Substring(0, 35), "...") : item.Value)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

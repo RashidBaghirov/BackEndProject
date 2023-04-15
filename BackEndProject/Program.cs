@@ -7,8 +7,25 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+
 builder.Services.AddScoped<LayoutService>();
+//builder.Services.AddScoped<IEmailService>(provider =>
+//{
+//	var emailSettings = builder.Configuration.GetSection("EmailSettings");
+//	var emailService = new EmailService(
+//		emailSettings["rashid.baghirov@yandex.com"],
+//		emailSettings["rashid.baghirov@yandex.com"],
+//		int.Parse(emailSettings["587"]),
+//		emailSettings["rashid.baghirov"],
+//		emailSettings["0006988323Salam"]
+//	);
+//	return emailService;
+//});
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddJsonOptions(options =>
 {
@@ -45,9 +62,11 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseRouting();
 
 app.UseEndpoints(endpoints =>
 {
@@ -59,5 +78,6 @@ app.UseEndpoints(endpoints =>
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 });
+
 
 app.Run();

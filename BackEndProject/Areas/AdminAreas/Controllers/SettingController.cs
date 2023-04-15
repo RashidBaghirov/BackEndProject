@@ -1,11 +1,14 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Entities;
+using BackEndProject.Utilities.Enum;
 using BackEndProject.Utilities.Extension;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEndProject.Areas.AdminAreas.Controllers
 {
     [Area("AdminAreas")]
+    [Authorize(Roles = "Admin,Moderator")]
     public class SettingController : Controller
     {
         private readonly ProductDbContext _context;
@@ -108,7 +111,6 @@ namespace BackEndProject.Areas.AdminAreas.Controllers
         {
             if (id == 0) return NotFound();
             Setting? setting = _context.Settings.FirstOrDefault(c => c.Id == id);
-
             if (setting is null) return NotFound();
             return View(setting);
         }

@@ -1,11 +1,13 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Entities;
+using BackEndProject.ViewModel;
 using BackEndProject.ViewModel.Basket;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using P230_Pronia.ViewModels.Cookies;
+using System.Diagnostics.Metrics;
 
 namespace BackEndProject.Controllers
 {
@@ -122,5 +124,61 @@ namespace BackEndProject.Controllers
 
 			return RedirectToAction("Index", "Home");
 		}
+
+
+		public async Task<IActionResult> WishList()
+		{
+			List<WishListItemVM> items = new();
+
+			User? user = await _userManager.FindByNameAsync(User.Identity.Name);
+			if (user is null)
+			{
+				var itemsStr = HttpContext.Request.Cookies["WishList"];
+
+				if (itemsStr is not null)
+				{
+					items = JsonConvert.DeserializeObject<List<WishListItemVM>>(itemsStr);
+
+					foreach (var item in items)
+					{
+						Product product = _context.Products.Include(c => c.ProductImages).FirstOrDefault(x => x.Id == item.ProductId);
+
+						if (product != null)
+						{
+							item.Name = product.Name;
+							item.Price = (double)product.DiscountPrice;
+							item.Image = product.ProductImages.FirstOrDefault(x => x.IsMain == true)?.Path;
+						}
+					}
+				}
+			}
+			else
+			{
+				List<WishListItem> wishlistItems = _context.WishListItems.Include(x => x.Product).ThenInclude(x => x.ProductImages).Where(x => x.UserId == user.Id).ToList();
+				items = wishlistItems.Select(x => new WishListItemVM
+				{
+					ProductId = x.ProductId,
+					Image = x.Product.ProductImages.FirstOrDefault(bi => bi.IsMain == true)?.Path,
+					Name = x.Product.Name,
+					Price = (double)x.Product.DiscountPrice
+				}).ToList();
+
+				// _context.WishListItems.Add(items); // burada hata verir
+				// değiştirilmesi gereken kod şu şekildedir:
+				foreach (var item in items)
+				{
+					var wishListItem = new WishListItem
+					{
+						UserId = user.Id,
+						ProductId = item.ProductId
+					};
+					_context.WishListItems.Add(wishListItem);
+				}
+
+				_context.SaveChanges(); // save işlemini burada yapabilirsiniz
+			}
+			return RedirectToAction("Index", "Home");
+		}
+
 	}
 }
