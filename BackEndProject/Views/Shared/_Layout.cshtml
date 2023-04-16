@@ -3,7 +3,8 @@
 @inject BackEndProject.Services.LayoutService layoutService
 @{
 	Dictionary<string, string> settings = layoutService.GetSettings();
-
+	var baskets = layoutService.GetBasketItem();
+	var basket = layoutService.GetBasketItems();
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +79,7 @@
 								<a href="~/assets/#" class="dropdn-link js-dropdn-link minicart-link only-icon" data-panel="#dropdnMinicart">
 									<i class="icon-basket"></i>
 									<span class="minicart-qty">3</span>
-									<span class="minicart-total hide-mobile">$34.99</span>
+									<span class="minicart-total hide-mobile">$@basket.Sum(e=>e.UnitPrice*e.SaleQuantity)</span>
 								</a>
 							</div>
 						</div>
@@ -186,11 +187,11 @@
 							<ul class="mmenu mmenu-js">
 								<li class="mmenu-item--simple">
 									<a asp-controller="home" asp-action="index" class="active">Home</a>
-									
+
 								</li>
 								<li class="mmenu-item--simple">
 									<a asp-controller="product" asp-action="index">Shop</a>
-								
+
 								</li>
 								@*ozum ucun qeyd*@
 								<li><a href="~/assets/category.html">Accessories<span class="menu-label">SALE</span></a></li>
@@ -426,8 +427,8 @@
 								<div class="dropdn dropdn_fullheight minicart">
 									<a href="~/assets/#" class="dropdn-link js-dropdn-link minicart-link" data-panel="#dropdnMinicart">
 										<i class="icon-basket"></i>
-										@*<span class="minicart-qty">@(baskets is null ? "0" : baskets.CookiesBasketItems.Count)</span>*@
-										@*<span class="minicart-total hide-mobile">$@baskets.TotalPrice</span>*@
+										<span class="minicart-qty">@(baskets is null ? "0" : baskets.Count)</span>
+										<span class="minicart-total hide-mobile"></span>
 									</a>
 								</div>
 							</div>
@@ -445,7 +446,7 @@
 					@if (User.Identity.IsAuthenticated)
 					{
 						<li><a asp-controller="Account" asp-action="Details"><span>@User.Identity.Name/My Account</span><i class="icon-user2"></i></a></li>
-						<li><a asp-controller="Order" asp-action="Index"><span>Checkout</span><i class="icon-card"></i></a></li>
+						<li><a href="~/assets/checkout.html"><span>Checkout</span><i class="icon-card"></i></a></li>
 						<li><a asp-controller="Account" asp-action="LogOut"><span>Log Out</span><i class="icon-login"></i></a></li>
 						@if (User.IsInRole(Roles.Admin.ToString()))
 						{
@@ -471,31 +472,32 @@
 			<div class="dropdn-content-block">
 				<div class="dropdn-close"><span class="js-dropdn-close">Close</span></div>
 				<div class="minicart-drop-content js-dropdn-content-scroll">
-				@*	@foreach (var item in baskets.CookiesBasketItems)
+					@foreach (var item in baskets)
 					{
-						Product? products = layoutService.GetProducts().FirstOrDefault(p => p.Id == item.Id);
+						Product? products = layoutService.GetProducts().FirstOrDefault(p => p.Id == item.ProductId);
+						BasketItem? bsk = basket.FirstOrDefault(p => p.ProductSizeColorId == item.ProductSizeColorId);
 						if (products is not null)
 						{
 							<div class="minicart-prd row">
 								<div class="minicart-prd-image image-hover-scale-circle col">
-									<a href="~/assets/product.html"><img src="~/assets/images/skins/fashion/product-page/@products.ProductImages.FirstOrDefault(x=>x.IsMain==true)?.Path" class="lazyload fade-up"  alt=""></a>
+									<a href="~/assets/product.html"><img src="~/assets/images/skins/fashion/product-page/@products.ProductImages.FirstOrDefault(x=>x.IsMain==true)?.Path" class="lazyload fade-up" alt=""></a>
 								</div>
 								<div class="minicart-prd-info col">
 									<div class="minicart-prd-tag">FOXic</div>
 									<h2 class="minicart-prd-name"><a href="~/assets/#">@products.Name</a></h2>
-									<div class="minicart-prd-qty"><span class="minicart-prd-qty-label">Quantity:</span><span class="minicart-prd-qty-value">1</span></div>
+									<div class="minicart-prd-qty"><span class="minicart-prd-qty-label">Quantity:</span><span class="minicart-prd-qty-value">@item.Quantity</span></div>
 									<div class="minicart-prd-price prd-price">
 										<div class="price-old">$@products.Price</div>
 										<div class="price-new">$@products.DiscountPrice</div>
 									</div>
 								</div>
 								<div class="minicart-prd-action">
-									<a asp-controller="Order" asp-action="RemoveBasketItem" class="product-remove" data-line-number="1"><i class="icon-recycle"></i></a>
+									<a asp-controller="Order" asp-action="RemoveBasketItem" asp-route-basketItemId="@bsk.Id" class="product-remove" data-line-number="1"><i class="icon-recycle"></i></a>
 								</div>
 							</div>
 						}
-					}*@
-					
+					}
+
 					<div class="minicart-empty js-minicart-empty d-none">
 						<div class="minicart-empty-text">Your cart is empty</div>
 						<div class="minicart-empty-icon">
@@ -528,7 +530,7 @@
 					<div class="loader-horizontal-sm js-loader-horizontal-sm" data-loader-horizontal=""><span></span></div>
 					<div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center">
 						<div class="minicart-drop-total-txt col-auto heading-font">Subtotal</div>
-						@*<div class="minicart-drop-total-price col" data-header-cart-total="">$@baskets.TotalPrice</div>*@
+						<div class="minicart-drop-total-price col" data-header-cart-total="">$@basket.Sum(e=>e.UnitPrice*e.SaleQuantity)</div>
 					</div>
 					<div class="minicart-drop-actions">
 						<a href="~/assets/cart.html" class="btn btn--md btn--grey"><i class="icon-basket"></i><span>Cart Page</span></a>
@@ -549,11 +551,11 @@
 
 	</div>
 	<!--//header-->
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
 	<footer class="page-footer footer-style-6 ">
 		<div class="holder ">
 			<div class="footer-shop-info">
@@ -587,7 +589,7 @@
 							<div class="text">
 								<h4>@settings["GuarenteeTitle"]</h4>
 								<p>@settings["GuarenteeDesc"]</p>
-							
+
 							</div>
 						</div>
 					</div>

@@ -167,21 +167,21 @@ namespace BackEndProject.Controllers
 			if (user is null)
 			{
 				var productStr = HttpContext.Request.Cookies["Products"];
-				List<CookiesBasketItemVM> cookiesBaskets = new();
+				CookiesBasketVM cookiesBaskets = new();
 
 				if (!string.IsNullOrEmpty(productStr))
 				{
 					try
 					{
-						cookiesBaskets = JsonConvert.DeserializeObject<List<CookiesBasketItemVM>>(productStr);
+						cookiesBaskets = JsonConvert.DeserializeObject<CookiesBasketVM>(productStr);
 					}
 					catch (JsonException)
 					{
-						cookiesBaskets = new List<CookiesBasketItemVM>();
+						cookiesBaskets = new CookiesBasketVM();
 					}
 				}
 
-				CookiesBasketItemVM existed = cookiesBaskets.Find(c => c.ProductSizeColorId == productId);
+				CookiesBasketItemVM existed = cookiesBaskets.CookiesBasketItems.Find(c => c.ProductSizeColorId == productId);
 
 				if (existed is null)
 				{
@@ -192,7 +192,7 @@ namespace BackEndProject.Controllers
 						Quantity = basketProduct.AddCart.Quantity,
 						Price = productSizeColor.Product.Price,
 					};
-					cookiesBaskets.Add(newitem);
+					cookiesBaskets.CookiesBasketItems.Add(newitem);
 				}
 				else
 				{
@@ -247,6 +247,63 @@ namespace BackEndProject.Controllers
 			return RedirectToAction("index", "home");
 		}
 
+		public async Task<IActionResult> RemoveBasketItem(int basketItemId)
+		{
+			User? user = null; if (User.Identity.IsAuthenticated)
+			{
+				user = await _userManager.FindByNameAsync(User.Identity.Name);
+			}
 
+			if (user is null)
+			{
+				var productStr = HttpContext.Request.Cookies["Products"];
+				CookiesBasketVM cookiesBaskets = new();
+
+				if (!string.IsNullOrEmpty(productStr))
+				{
+					try
+					{
+						cookiesBaskets = JsonConvert.DeserializeObject<CookiesBasketVM>(productStr);
+					}
+					catch (JsonException)
+					{
+						cookiesBaskets = new CookiesBasketVM();
+					}
+				}
+
+				CookiesBasketItemVM existed = cookiesBaskets.CookiesBasketItems.Find(c => c.ProductSizeColorId == basketItemId);
+
+				if (existed is not null)
+				{
+					cookiesBaskets.CookiesBasketItems.Remove(existed);
+
+					var newProductStr = JsonConvert.SerializeObject(cookiesBaskets);
+					HttpContext.Response.Cookies.Append("Products", newProductStr);
+				}
+			}
+			else
+			{
+				BasketItem item = _context.BasketItems.FirstOrDefault(i => i.Id == basketItemId);
+
+				if (item is not null)
+				{
+					Basket userActiveBasket = _context.Baskets
+						.Include(b => b.User)
+						.Include(b => b.BasketItems)
+						.ThenInclude(i => i.ProductSizeColor)
+						.FirstOrDefault(b => b.User.Id == user.Id && !b.IsOrdered);
+
+					if (userActiveBasket is not null)
+					{
+						userActiveBasket.BasketItems.Remove(item);
+						userActiveBasket.TotalPrice = userActiveBasket.BasketItems.Sum(p => p.SaleQuantity * p.UnitPrice);
+
+						await _context.SaveChangesAsync();
+					}
+				}
+			}
+
+			return RedirectToAction("index", "home");
+		}
 	}
 }
