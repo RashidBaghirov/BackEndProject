@@ -3,7 +3,6 @@
     public class CookiesBasketVM
     {
         public List<CookiesBasketItemVM> CookiesBasketItems { get; set; }
-
         public decimal TotalPrice { get; set; }
 
         public CookiesBasketVM()

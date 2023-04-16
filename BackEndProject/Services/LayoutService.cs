@@ -1,6 +1,5 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Entities;
-using BackEndProject.ViewModel.Basket;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -27,26 +26,26 @@ namespace BackEndProject.Services
 		}
 
 
-		public CookiesBasketVM? GetBasket()
-		{
-			var cookies = _accessor.HttpContext.Request.Cookies["basket"];
-			CookiesBasketVM basket = new();
-			if (cookies is not null)
-			{
-				basket = JsonConvert.DeserializeObject<CookiesBasketVM>(cookies);
-				foreach (CookiesBasketItemVM item in basket.CookiesBasketItems)
-				{
-					Product plant = _context.Products.FirstOrDefault(p => p.Id == item.Id);
-					if (plant is null)
-					{
-						basket.CookiesBasketItems.Remove(item);
-						basket.TotalPrice -= item.Quantity * item.Price;
-					}
-				}
-			}
-			return basket;
+		//public CookiesBasketVM? GetBasket()
+		//{
+		//    var cookies = _accessor.HttpContext.Request.Cookies["basket"];
+		//    CookiesBasketVM basket = new();
+		//    if (cookies is not null)
+		//    {
+		//        basket = JsonConvert.DeserializeObject<CookiesBasketVM>(cookies);
+		//        foreach (CookiesBasketItemVM item in basket.CookiesBasketItems)
+		//        {
+		//            Product plant = _context.Products.FirstOrDefault(p => p.Id == item.Id);
+		//            if (plant is null)
+		//            {
+		//                basket.CookiesBasketItems.Remove(item);
+		//                basket.TotalPrice -= item.Quantity * item.Price;
+		//            }
+		//        }
+		//    }
+		//    return basket;
 
-		}
+		//}
 
 		public List<Product> GetProducts()
 		{

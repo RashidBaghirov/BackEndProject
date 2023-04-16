@@ -3,7 +3,7 @@
 @inject BackEndProject.Services.LayoutService layoutService
 @{
 	Dictionary<string, string> settings = layoutService.GetSettings();
-	CookiesBasketVM baskets=layoutService.GetBasket();
+
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -426,8 +426,8 @@
 								<div class="dropdn dropdn_fullheight minicart">
 									<a href="~/assets/#" class="dropdn-link js-dropdn-link minicart-link" data-panel="#dropdnMinicart">
 										<i class="icon-basket"></i>
-										<span class="minicart-qty">@(baskets is null ? "0" : baskets.CookiesBasketItems.Count)</span>
-										<span class="minicart-total hide-mobile">$@baskets.TotalPrice</span>
+										@*<span class="minicart-qty">@(baskets is null ? "0" : baskets.CookiesBasketItems.Count)</span>*@
+										@*<span class="minicart-total hide-mobile">$@baskets.TotalPrice</span>*@
 									</a>
 								</div>
 							</div>
@@ -445,7 +445,7 @@
 					@if (User.Identity.IsAuthenticated)
 					{
 						<li><a asp-controller="Account" asp-action="Details"><span>@User.Identity.Name/My Account</span><i class="icon-user2"></i></a></li>
-						<li><a href="~/assets/checkout.html"><span>Checkout</span><i class="icon-card"></i></a></li>
+						<li><a asp-controller="Order" asp-action="Index"><span>Checkout</span><i class="icon-card"></i></a></li>
 						<li><a asp-controller="Account" asp-action="LogOut"><span>Log Out</span><i class="icon-login"></i></a></li>
 						@if (User.IsInRole(Roles.Admin.ToString()))
 						{
@@ -471,7 +471,7 @@
 			<div class="dropdn-content-block">
 				<div class="dropdn-close"><span class="js-dropdn-close">Close</span></div>
 				<div class="minicart-drop-content js-dropdn-content-scroll">
-					@foreach (var item in baskets.CookiesBasketItems)
+				@*	@foreach (var item in baskets.CookiesBasketItems)
 					{
 						Product? products = layoutService.GetProducts().FirstOrDefault(p => p.Id == item.Id);
 						if (products is not null)
@@ -494,7 +494,7 @@
 								</div>
 							</div>
 						}
-					}
+					}*@
 					
 					<div class="minicart-empty js-minicart-empty d-none">
 						<div class="minicart-empty-text">Your cart is empty</div>
@@ -528,7 +528,7 @@
 					<div class="loader-horizontal-sm js-loader-horizontal-sm" data-loader-horizontal=""><span></span></div>
 					<div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center">
 						<div class="minicart-drop-total-txt col-auto heading-font">Subtotal</div>
-						<div class="minicart-drop-total-price col" data-header-cart-total="">$@baskets.TotalPrice</div>
+						@*<div class="minicart-drop-total-price col" data-header-cart-total="">$@baskets.TotalPrice</div>*@
 					</div>
 					<div class="minicart-drop-actions">
 						<a href="~/assets/cart.html" class="btn btn--md btn--grey"><i class="icon-basket"></i><span>Cart Page</span></a>
