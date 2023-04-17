@@ -60,7 +60,6 @@ namespace BackEndProject.Areas.AdminAreas.Controllers
 			ViewBag.Tags = _context.Tags.AsEnumerable();
 			ViewBag.Sizes = _context.Sizes.AsEnumerable();
 			ViewBag.Colors = _context.Colors.AsEnumerable();
-			TempData["InvalidImages"] = string.Empty;
 			if (!ModelState.IsValid)
 			{
 				return View();
@@ -96,8 +95,7 @@ namespace BackEndProject.Areas.AdminAreas.Controllers
 			{
 				if (!image.IsValidFile("image/") || !image.IsValidLength(1))
 				{
-					TempData["InvalidImages"] += image.FileName;
-					continue;
+					return View();
 				}
 				ProductImage productImage = new()
 				{

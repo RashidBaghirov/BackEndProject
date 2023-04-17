@@ -40,56 +40,27 @@ namespace BackEndProject.Services
 			return products;
 		}
 
-		//public List<Basket> GetBasketItems()
-		//{
-		//	List<Basket> baskets = _context.Baskets.Include(b => b.BasketItems).ToList();
 
-		//	return baskets;
-		//}
-
-		public List<CookiesBasketItemVM> GetBasketItem()
+		public List<BasketItemVM> GetBasketItem()
 		{
-			List<CookiesBasketItemVM> items = new List<CookiesBasketItemVM>();
+			List<BasketItemVM> items = new();
 
-			User member = null;
+			User member = new();
 
 			if (_accessor.HttpContext.User.Identity.IsAuthenticated)
 			{
 				member = _userManager.Users.FirstOrDefault(x => x.UserName == _accessor.HttpContext.User.Identity.Name);
 			}
 
-
-			if (member == null)
+			List<BasketItem> basketItems = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Where(x => x.Basket.User.Id == member.Id).ToList();
+			items = basketItems.Select(x => new BasketItemVM
 			{
-				var itemsStr = _accessor.HttpContext.Request.Cookies["Products"];
+				ProductId = x.ProductSizeColor.ProductId,
+				Quantity = x.SaleQuantity,
+				ProductSizeColorId = x.ProductSizeColorId,
+				Price = (decimal)x.ProductSizeColor.Product.DiscountPrice
+			}).ToList();
 
-				if (itemsStr != null)
-				{
-					items = JsonConvert.DeserializeObject<List<CookiesBasketItemVM>>(itemsStr);
-
-					foreach (var item in items)
-					{
-						Product product = _context.Products.Include(c => c.ProductImages).FirstOrDefault(x => x.Id == item.ProductId);
-						if (product != null)
-						{
-							item.ProductId = product.Id;
-							item.Price = product.Price;
-							item.Quantity = product.AddCart.Quantity;
-						}
-					}
-				}
-			}
-			else
-			{
-				List<BasketItem> basketItems = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Where(x => x.Basket.User.Id == member.Id).ToList();
-				items = basketItems.Select(x => new CookiesBasketItemVM
-				{
-					ProductId = x.ProductSizeColor.ProductId,
-					Quantity = x.SaleQuantity,
-					ProductSizeColorId = x.ProductSizeColorId,
-					Price = (decimal)x.ProductSizeColor.Product.DiscountPrice
-				}).ToList();
-			}
 
 			return items;
 		}

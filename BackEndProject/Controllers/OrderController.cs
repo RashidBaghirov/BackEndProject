@@ -1,5 +1,6 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Entities;
+using BackEndProject.Utilities.Enum;
 using BackEndProject.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using P230_Pronia.ViewModels.Cookies;
 using System.Diagnostics.Metrics;
+using System.Security.Claims;
 
 namespace BackEndProject.Controllers
 {
@@ -157,93 +159,52 @@ namespace BackEndProject.Controllers
 
 			if (productSizeColor is null) return NotFound();
 
-			User? user = null;
+			User? user = new();
 
 			if (User.Identity.IsAuthenticated)
 			{
 				user = await _userManager.FindByNameAsync(User.Identity.Name);
 			}
-
-			if (user is null)
+			else
 			{
-				var productStr = HttpContext.Request.Cookies["Products"];
-				CookiesBasketVM cookiesBaskets = new();
+				return RedirectToAction("Login", "Account");
+			}
+			BasketItem item = _context.BasketItems.FirstOrDefault(i => i.ProductSizeColor == productSizeColor);
+			Basket userActiveBasket = _context.Baskets
+				.Include(b => b.User)
+				.Include(b => b.BasketItems)
+				.ThenInclude(i => i.ProductSizeColor)
+				.FirstOrDefault(b => b.User.Id == user.Id && !b.IsOrdered);
 
-				if (!string.IsNullOrEmpty(productStr))
+			if (userActiveBasket is null)
+			{
+				userActiveBasket = new Basket()
 				{
-					try
-					{
-						cookiesBaskets = JsonConvert.DeserializeObject<CookiesBasketVM>(productStr);
-					}
-					catch (JsonException)
-					{
-						cookiesBaskets = new CookiesBasketVM();
-					}
-				}
+					User = user,
+					BasketItems = new List<BasketItem>(),
+				};
+				_context.Baskets.Add(userActiveBasket);
+			}
 
-				CookiesBasketItemVM existed = cookiesBaskets.CookiesBasketItems.Find(c => c.ProductSizeColorId == productId);
+			BasketItem items = userActiveBasket.BasketItems.FirstOrDefault(i => i.ProductSizeColor == productSizeColor);
 
-				if (existed is null)
-				{
-					CookiesBasketItemVM newitem = new CookiesBasketItemVM
-					{
-						ProductId = basketProduct.Id,
-						ProductSizeColorId = productSizeColor.Id,
-						Quantity = basketProduct.AddCart.Quantity,
-						Price = productSizeColor.Product.Price,
-					};
-					cookiesBaskets.CookiesBasketItems.Add(newitem);
-				}
-				else
-				{
-					existed.Quantity += basketProduct.AddCart.Quantity;
-				}
-
-				var newProductStr = JsonConvert.SerializeObject(cookiesBaskets);
-				HttpContext.Response.Cookies.Append("Products", newProductStr);
+			if (items is not null)
+			{
+				items.SaleQuantity += basketProduct.AddCart.Quantity;
 			}
 			else
 			{
-				BasketItem item = _context.BasketItems.FirstOrDefault(i => i.ProductSizeColor == productSizeColor);
-				Basket userActiveBasket = _context.Baskets
-					.Include(b => b.User)
-					.Include(b => b.BasketItems)
-					.ThenInclude(i => i.ProductSizeColor)
-					.FirstOrDefault(b => b.User.Id == user.Id && !b.IsOrdered);
-
-				if (userActiveBasket is null)
+				items = new BasketItem
 				{
-					userActiveBasket = new Basket()
-					{
-						User = user,
-						BasketItems = new List<BasketItem>(),
-					};
-					_context.Baskets.Add(userActiveBasket);
-				}
-
-				BasketItem items = userActiveBasket.BasketItems.FirstOrDefault(i => i.ProductSizeColor == productSizeColor);
-
-				if (items != null)
-				{
-					items.SaleQuantity += basketProduct.AddCart.Quantity;
-				}
-				else
-				{
-					items = new BasketItem
-					{
-						ProductSizeColor = productSizeColor,
-						SaleQuantity = basketProduct.AddCart.Quantity,
-						UnitPrice = productSizeColor.Product.Price,
-						Basket = userActiveBasket
-					};
-					userActiveBasket.BasketItems.Add(items);
-				}
-
-				userActiveBasket.TotalPrice = userActiveBasket.BasketItems.Sum(p => p.SaleQuantity * p.UnitPrice);
-
-				await _context.SaveChangesAsync();
+					ProductSizeColor = productSizeColor,
+					SaleQuantity = basketProduct.AddCart.Quantity,
+					UnitPrice = (decimal)productSizeColor.Product.DiscountPrice,
+					Basket = userActiveBasket
+				};
+				userActiveBasket.BasketItems.Add(items);
 			}
-
+			userActiveBasket.TotalPrice = userActiveBasket.BasketItems.Sum(p => p.SaleQuantity * p.UnitPrice);
+			await _context.SaveChangesAsync();
 			return RedirectToAction("index", "home");
 		}
 
@@ -253,57 +214,183 @@ namespace BackEndProject.Controllers
 			{
 				user = await _userManager.FindByNameAsync(User.Identity.Name);
 			}
+			BasketItem item = _context.BasketItems.FirstOrDefault(i => i.Id == basketItemId);
 
-			if (user is null)
+			if (item is not null)
 			{
-				var productStr = HttpContext.Request.Cookies["Products"];
-				CookiesBasketVM cookiesBaskets = new();
-
-				if (!string.IsNullOrEmpty(productStr))
+				Basket userActiveBasket = _context.Baskets
+					.Include(b => b.User)
+					.Include(b => b.BasketItems)
+					.ThenInclude(i => i.ProductSizeColor)
+					.FirstOrDefault(b => b.User.Id == user.Id && !b.IsOrdered);
+				if (userActiveBasket is not null)
 				{
-					try
-					{
-						cookiesBaskets = JsonConvert.DeserializeObject<CookiesBasketVM>(productStr);
-					}
-					catch (JsonException)
-					{
-						cookiesBaskets = new CookiesBasketVM();
-					}
-				}
+					userActiveBasket.BasketItems.Remove(item);
+					userActiveBasket.TotalPrice = userActiveBasket.BasketItems.Sum(p => p.SaleQuantity * p.UnitPrice);
 
-				CookiesBasketItemVM existed = cookiesBaskets.CookiesBasketItems.Find(c => c.ProductSizeColorId == basketItemId);
-
-				if (existed is not null)
-				{
-					cookiesBaskets.CookiesBasketItems.Remove(existed);
-
-					var newProductStr = JsonConvert.SerializeObject(cookiesBaskets);
-					HttpContext.Response.Cookies.Append("Products", newProductStr);
+					await _context.SaveChangesAsync();
 				}
 			}
-			else
-			{
-				BasketItem item = _context.BasketItems.FirstOrDefault(i => i.Id == basketItemId);
-
-				if (item is not null)
-				{
-					Basket userActiveBasket = _context.Baskets
-						.Include(b => b.User)
-						.Include(b => b.BasketItems)
-						.ThenInclude(i => i.ProductSizeColor)
-						.FirstOrDefault(b => b.User.Id == user.Id && !b.IsOrdered);
-
-					if (userActiveBasket is not null)
-					{
-						userActiveBasket.BasketItems.Remove(item);
-						userActiveBasket.TotalPrice = userActiveBasket.BasketItems.Sum(p => p.SaleQuantity * p.UnitPrice);
-
-						await _context.SaveChangesAsync();
-					}
-				}
-			}
-
 			return RedirectToAction("index", "home");
 		}
+
+
+
+
+		public IActionResult Index()
+		{
+			if (!User.Identity.IsAuthenticated)
+			{
+				return View(new List<WishListItem>());
+			}
+
+			var userId = _userManager.GetUserId(User);
+
+			var wishListItems = _context.WishListItems
+				.Include(wli => wli.Product)
+				.ThenInclude(p => p.ProductImages)
+				.Where(wli => wli.UserId == userId)
+				.ToList();
+
+			if (wishListItems.Count == 0)
+			{
+				return View(new List<WishListItem>());
+			}
+
+			return View(wishListItems);
+		}
+
+		public async Task<IActionResult> AddToWishList(int productId)
+		{
+			Product product = await _context.Products.FindAsync(productId);
+
+			if (product is null)
+			{
+				return NotFound();
+			}
+
+			if (!User.Identity.IsAuthenticated)
+			{
+				return RedirectToAction("Login", "Account");
+			}
+
+			User user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+			WishListItem userWishlistItem = await _context.WishListItems
+				.FirstOrDefaultAsync(x => x.UserId == user.Id && x.ProductId == productId);
+
+			if (userWishlistItem is null)
+			{
+				userWishlistItem = new WishListItem
+				{
+					UserId = user.Id,
+					ProductId = productId
+				};
+				_context.WishListItems.Add(userWishlistItem);
+			}
+
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction(nameof(Index));
+		}
+
+
+		public async Task<IActionResult> RemoveFromWishList(int wishListItemId)
+		{
+			User user = await _userManager.FindByNameAsync(User.Identity.Name);
+			WishListItem wishListItem = await _context.WishListItems
+				.FirstOrDefaultAsync(x => x.UserId == user.Id && x.Id == wishListItemId);
+			if (wishListItem is null)
+			{
+				return NotFound();
+			}
+			_context.WishListItems.Remove(wishListItem);
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction(nameof(Index));
+		}
+
+		public async Task<IActionResult> Checkout()
+		{
+			CheckOutVM checkoutVM = new();
+
+			User user = await _userManager.FindByNameAsync(User.Identity.Name);
+			if (user is null) return View();
+
+			checkoutVM.Email = user.Email;
+			checkoutVM.FullName = user.FullName;
+			checkoutVM.Phone = user.PhoneNumber;
+
+			checkoutVM.BasketItemVMs = _context.BasketItems.Include(x => x.ProductSizeColor.Product).Where(x => x.Basket.User.Id == user.Id)
+														   .Select(x => new BasketItemVM
+														   {
+															   ProductId = x.ProductSizeColor.ProductId,
+															   ProductSizeColorId = x.ProductSizeColorId,
+															   Quantity = x.SaleQuantity,
+															   Price = x.UnitPrice
+														   }).ToList();
+
+			decimal totalPrice = 0;
+
+			foreach (var item in checkoutVM.BasketItemVMs)
+			{
+				totalPrice += item.Quantity * item.Price;
+			}
+
+			checkoutVM.TotalPrice = totalPrice;
+
+			ViewBag.Products = _context.Products.Include(p => p.ProductImages).ToList();
+			return View(checkoutVM);
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> CheckOut(CheckOutVM model)
+		{
+			var order = new Order
+			{
+				FullName = model.FullName,
+				Email = model.Email,
+				Phone = model.Phone,
+				Address = model.Address,
+				Note = model.Note,
+				CreatedAt = DateTime.Now,
+				Status = model.OrderStatus,
+				TotalPrice = 0,
+				OrderItems = new List<OrderItem>()
+			};
+			decimal totalPrice = 0;
+			foreach (BasketItemVM basketItem in model.BasketItemVMs)
+			{
+				ProductSizeColor? productSizeColor = await _context.ProductSizeColors
+					.Include(p => p.Product)
+					.FirstOrDefaultAsync(psc => psc.Id == basketItem.ProductSizeColorId);
+
+				if (productSizeColor == null)
+				{
+					ModelState.AddModelError("ProductSizeColorId", "Product size color does not exist.");
+					return View(model);
+				}
+
+				var orderItem = new OrderItem
+				{
+					SaleQuantity = basketItem.Quantity,
+					UnitPrice = productSizeColor.Product.Price,
+					ProductSizeColorId = basketItem.ProductSizeColorId,
+					ProductSizeColor = productSizeColor,
+				};
+				order.OrderItems.Add(orderItem);
+				decimal itemTotalPrice = orderItem.UnitPrice * orderItem.SaleQuantity;
+				totalPrice += itemTotalPrice;
+			}
+			order.TotalPrice = totalPrice;
+			_context.Orders.Add(order);
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction("Index", "Home");
+		}
+
+
+
 	}
 }

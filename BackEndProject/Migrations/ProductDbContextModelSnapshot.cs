@@ -194,21 +194,39 @@ namespace BackEndProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<int>("BasketId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DeliveredDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
-                    b.Property<DateTime>("RequiredDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(6,2)");
@@ -223,6 +241,35 @@ namespace BackEndProject.Migrations
                         .IsUnique();
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductSizeColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SaleQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductSizeColorId");
+
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("BackEndProject.Entities.Product", b =>
@@ -742,6 +789,25 @@ namespace BackEndProject.Migrations
                     b.Navigation("Basket");
                 });
 
+            modelBuilder.Entity("BackEndProject.Entities.OrderItem", b =>
+                {
+                    b.HasOne("BackEndProject.Entities.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackEndProject.Entities.ProductSizeColor", "ProductSizeColor")
+                        .WithMany()
+                        .HasForeignKey("ProductSizeColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("ProductSizeColor");
+                });
+
             modelBuilder.Entity("BackEndProject.Entities.Product", b =>
                 {
                     b.HasOne("BackEndProject.Entities.Collection", "Collections")
@@ -946,6 +1012,11 @@ namespace BackEndProject.Migrations
             modelBuilder.Entity("BackEndProject.Entities.Instruction", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("BackEndProject.Entities.Product", b =>

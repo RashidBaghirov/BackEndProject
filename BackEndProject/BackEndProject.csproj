@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\AdminAreas\Data\**" />
+    <Compile Remove="Areas\AdminAreas\Models\**" />
+    <Content Remove="Areas\AdminAreas\Data\**" />
+    <Content Remove="Areas\AdminAreas\Models\**" />
+    <EmbeddedResource Remove="Areas\AdminAreas\Data\**" />
+    <EmbeddedResource Remove="Areas\AdminAreas\Models\**" />
+    <None Remove="Areas\AdminAreas\Data\**" />
+    <None Remove="Areas\AdminAreas\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MailKit" Version="3.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.16" />
@@ -20,8 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\AdminAreas\Data\" />
-    <Folder Include="Areas\AdminAreas\Models\" />
+    <None Include="Views\Order\Index.cshtml" />
   </ItemGroup>
 
 </Project>
