@@ -62,7 +62,7 @@
 				</div>
 				<div class="prd-hovers">
 					<div class="prd-circle-labels">
-						<div><a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a></div>
+						<div><a asp-controller="order" asp-action="AddToWishList" asp-route-id="@item.Id" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a></div>
 					</div>
 					<div class="prd-price">
 
@@ -71,7 +71,9 @@
 					<div class="prd-action">
 						<div class="prd-action-left">
 							<form action="#">
-								<button class="btn js-prd-addtocart" data-product='{"name": "Midi Dress with Belt", "path":"images/skins/fashion/products/product-06-1.jpg", "url":"product.html", "aspect_ratio":0.778}'>Add To Cart</button>
+								<a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">
+									<button class="btn js-prd-addtocart">Add To Cart</button>
+								</a>
 							</form>
 						</div>
 					</div>

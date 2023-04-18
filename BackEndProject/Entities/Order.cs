@@ -18,7 +18,7 @@ namespace BackEndProject.Entities
 		public string Email { get; set; }
 
 		[StringLength(maximumLength: 500)]
-		public string Note { get; set; }
+		public string? Note { get; set; }
 
 		public DateTime CreatedAt { get; set; }
 		public OrderStatus Status { get; set; }

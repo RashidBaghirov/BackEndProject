@@ -352,17 +352,13 @@ namespace BackEndProject.Controllers
 			}
 			User user = await _userManager.GetUserAsync(User);
 			Basket basket = _context.Baskets.FirstOrDefault(x => x.User.Id == user.Id);
+			if (basket != null)
+			{
+				basket.IsOrdered = OrderStatus.Pending;
+				_context.SaveChanges();
+			}
 
-			if (model.Note is null)
-			{
-				ModelState.AddModelError("Note", "Please Write Some Note");
-				return View();
-			}
-			if (model.Address is null)
-			{
-				ModelState.AddModelError("Address", "Please Write Address");
-				return View();
-			}
+
 			var order = new Order
 			{
 				FullName = model.FullName,
@@ -376,6 +372,16 @@ namespace BackEndProject.Controllers
 				TotalPrice = 0,
 				OrderItems = new List<OrderItem>()
 			};
+			if (model.Note is null)
+			{
+				ModelState.AddModelError("Note", "Please Write Some Note");
+				return View();
+			}
+			if (model.Address is null)
+			{
+				ModelState.AddModelError("Address", "Please Write Address");
+				return View();
+			}
 			decimal totalPrice = 0;
 			foreach (BasketItemVM basketItem in model.BasketItemVMs)
 			{

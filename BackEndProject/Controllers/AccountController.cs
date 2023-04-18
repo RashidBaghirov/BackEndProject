@@ -1,9 +1,11 @@
-﻿using BackEndProject.Entities;
+﻿using BackEndProject.DAL;
+using BackEndProject.Entities;
 using BackEndProject.Services;
 using BackEndProject.Utilities.Enum;
 using BackEndProject.ViewModel.Register_and_Login;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEndProject.Controllers
 {
@@ -12,12 +14,14 @@ namespace BackEndProject.Controllers
 		private readonly UserManager<User> _usermanager;
 		private readonly SignInManager<User> _signInManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
+		private readonly ProductDbContext _context;
 
-		public AccountController(UserManager<User> usermanager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
+		public AccountController(UserManager<User> usermanager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, ProductDbContext _context)
 		{
 			_usermanager = usermanager;
 			_signInManager = signInManager;
 			_roleManager = roleManager;
+			_context = _context;
 		}
 
 		public IActionResult Register()
@@ -58,7 +62,7 @@ namespace BackEndProject.Controllers
 			//_emailService.Send(user.Email, subject, body);
 
 			await _usermanager.AddToRoleAsync(user, Roles.User.ToString());
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction(nameof(Login));
 		}
 
 
@@ -97,7 +101,7 @@ namespace BackEndProject.Controllers
 		public async Task<IActionResult> LogOut()
 		{
 			await _signInManager.SignOutAsync();
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction(nameof(Login));
 		}
 
 
@@ -177,7 +181,18 @@ namespace BackEndProject.Controllers
 		}
 
 
+		public async Task<IActionResult> MyOrder()
+		{
+			User user = await _usermanager.FindByNameAsync(User.Identity.Name);
+			if (user is null)
+			{
+				return RedirectToAction(nameof(Login));
+			}
+			//List<Order> orders = _context.Orders.Include(x => x.OrderItems).ToList();
+			//if (orders is null) return RedirectToAction("Index", "Product");
+			return View();
 
+		}
 	}
 
 }

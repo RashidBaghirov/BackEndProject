@@ -48,10 +48,10 @@
 				<div class="title-wrap title-tabs-wrap text-center js-title-tabs ps ps--theme_default" data-ps-id="d1b69d8d-1bc7-b096-ba42-811d09f75c04">
 					<div class="title-tabs">
 						<h2 class="h3-style active">
-							<a href="ajax/ajax-product-tab-01.json" data-total="8" data-loaded="4" data-grid-tab-title=""><span class="title-tabs-text theme-font">Women</span></a>
+							<a asp-controller="product" asp-action="index" data-total="8" data-loaded="4" data-grid-tab-title=""><span class="title-tabs-text theme-font womensclick">Women</span></a>
 						</h2>
 						<h2 class="h3-style">
-							<a href="ajax/ajax-product-tab-02.json" data-total="8" data-loaded="4" data-grid-tab-title=""><span class="title-tabs-text theme-font">Men</span></a>
+							<a asp-controller="product" asp-action="index" data-total="8" data-loaded="4" data-grid-tab-title=""><span class="title-tabs-text theme-font mensClick">Men</span></a>
 						</h2>
 					</div>
 				</div>
@@ -63,21 +63,41 @@
 		</div>
 	</div>
 	<div class="holder holder-mt-medium ">
-		<div class="container">
-			<a href="https://bit.ly/3eJX5XE" target="_blank" class="bnr-wrap bnr-">
+		<div class="container mens-btn d-none" style="transition:all ease-out">
+			<a asp-controller="product" asp-action="index" class="bnr-wrap bnr-">
 				<div class="bnr custom-caption image-hover-scale bnr--middle bnr--right bnr--fullwidth">
 					<div class="bnr-img d-none d-sm-block image-container" style="padding-bottom: 41.36752136752137%">
-						<img src="~/assets/images/skins/fashion/product-page/10.png" class="lazyload fade-up" alt="">
-					</div>
-					<div class="bnr-img d-sm-none image-container" style="padding-bottom: 74.3139407244786%">
-						<img src="~/assets/images/skins/fashion/product-page/10.png" class="lazyload fade-up" alt="">
+						<img src="~/assets/images/skins/fashion/product-page/36.png" class="lazyload fade-up" alt="">
 					</div>
 					<div class="bnr-caption text-center" style="padding: 4% 4%; ">
 						<div class="bnr-caption-inside w-s-50 w-ms-100 title-wrap">
 							<h2 class="h1-style">The best trends<br class="d-sm-none"> of summer 2020</h2>
-							<div class="h-sub mt-0">eCommerce HTML Template</div>
+							<div class="h-sub mt-0">Best Developer :D</div>
 							<div class="bnr-btn inherit mt-sm order-3">
-								<div class="btn">Buy Now</div>
+								<a asp-controller="product" asp-action="index">
+									<div class="btn">Buy Now</div>
+									</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="container  womens-btn">
+			<a asp-controller="product" asp-action="index" class="bnr-wrap bnr-">
+				<div class="bnr custom-caption image-hover-scale bnr--middle bnr--right bnr--fullwidth">
+					<div class="bnr-img d-none d-sm-block image-container" style="padding-bottom: 41.36752136752137%">
+						<img src="~/assets/images/skins/fashion/product-page/1.png" class="lazyload fade-up" alt="">
+					</div>
+				
+					<div class="bnr-caption text-center" style="padding: 4% 4%; ">
+						<div class="bnr-caption-inside w-s-50 w-ms-100 title-wrap">
+							<h2 class="h1-style">The best trends<br class="d-sm-none"> of summer 2020</h2>
+							<div class="h-sub mt-0">Best Developer :D</div>
+							<div class="bnr-btn inherit mt-sm order-3">
+								<a asp-controller="product" asp-action="index">
+									<div class="btn">Buy Now</div>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -97,3 +117,23 @@
 		</div>
 	</div>
 </div>
+
+
+@section Script{
+<script>
+		$(document).ready(function () {
+		
+			$('.womensclick').click(function () {
+				console.log("salam");
+				$('.mens-btn').addClass('d-none');
+				$('.womens-btn').removeClass('d-none');
+			});
+
+			$('.mensClick').click(function () {
+				$('.womens-btn').addClass('d-none');
+				$('.mens-btn').removeClass('d-none');
+			});
+		});
+
+</script>
+}

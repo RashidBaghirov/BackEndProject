@@ -40,7 +40,12 @@
 								<label asp-for="RememberMe">Remember Me <a href="#" class="custom-color" data-fancybox data-src="#modalTerms">Terms and Conditions</a> and <a href="#" class="custom-color" data-fancybox data-src="#modalCookies">Cookie Policy</a></label>
 							</div>
 							<div class="text-center">
-								<button class="btn">Login</button>
+								<a>
+									<button class="btn">Login</button>
+								</a>
+								<a asp-controller="Account" asp-action="Register">
+									<button type="button" class="btn">Registration</button>
+								</a>
 							</div>
 						</form>
 					</div>

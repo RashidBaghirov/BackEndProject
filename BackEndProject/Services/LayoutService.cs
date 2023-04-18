@@ -28,16 +28,16 @@ namespace BackEndProject.Services
 		}
 
 
+		public List<Product> GetProducts()
+		{
+			List<Product> products = _context.Products.Include(p => p.ProductImages).ToList();
+			return products;
+		}
 		public List<BasketItem>? GetBasketItems()
 		{
 			List<BasketItem> basket = _context.BasketItems.Include(p => p.ProductSizeColor.Product).ThenInclude(p => p.ProductImages).ToList();
 
 			return basket;
-		}
-		public List<Product> GetProducts()
-		{
-			List<Product> products = _context.Products.Include(p => p.ProductImages).ToList();
-			return products;
 		}
 
 
@@ -45,14 +45,14 @@ namespace BackEndProject.Services
 		{
 			List<BasketItemVM> items = new();
 
-			User member = new();
+			User user = new();
 
 			if (_accessor.HttpContext.User.Identity.IsAuthenticated)
 			{
-				member = _userManager.Users.FirstOrDefault(x => x.UserName == _accessor.HttpContext.User.Identity.Name);
+				user = _userManager.Users.FirstOrDefault(x => x.UserName == _accessor.HttpContext.User.Identity.Name);
 			}
 
-			List<BasketItem> basketItems = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Where(x => x.Basket.User.Id == member.Id).ToList();
+			List<BasketItem> basketItems = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Where(x => x.Basket.User.Id == user.Id).ToList();
 			items = basketItems.Select(x => new BasketItemVM
 			{
 				ProductId = x.ProductSizeColor.ProductId,

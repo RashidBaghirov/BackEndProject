@@ -40,7 +40,7 @@
 						<!-- /Menu Toggle -->
 					</div>
 					<div class="col-auto hdr-logo">
-						<a style="width:100px;height:100px;object-fit:contain" href="~/assets/index.html" class="logo"><img src="~/assets/images/@settings["Logo"]" alt="Logo"></a>
+						<a style="width:100px;height:100px;object-fit:contain"  asp-action="Index" asp-controller="Home" class="logo"><img src="~/assets/images/@settings["Logo"]" alt="Logo"></a>
 					</div>
 					<!--navigation-->
 					<div class="hdr-nav hide-mobile nav-holder-s">
@@ -72,8 +72,7 @@
 							<div class="dropdn dropdn_fullheight minicart">
 								<a href="~/assets/#" class="dropdn-link js-dropdn-link minicart-link only-icon" data-panel="#dropdnMinicart">
 									<i class="icon-basket"></i>
-									<span class="minicart-qty">3</span>
-									<span class="minicart-total hide-mobile">$@basket.Sum(e=>e.UnitPrice*e.SaleQuantity)</span>
+									<span class="minicart-qty">@(baskets is null ? "0" : baskets.Count)</span>
 								</a>
 							</div>
 						</div>
@@ -356,7 +355,14 @@
 					<div class="loader-horizontal-sm js-loader-horizontal-sm" data-loader-horizontal=""><span></span></div>
 					<div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center">
 						<div class="minicart-drop-total-txt col-auto heading-font">Subtotal</div>
-						<div class="minicart-drop-total-price col" data-header-cart-total="">$@basket.Sum(e=>e.UnitPrice*e.SaleQuantity)</div>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<div class="minicart-drop-total-price col" data-header-cart-total="">$@basket.Sum(e=>e.UnitPrice*e.SaleQuantity)</div>
+						}
+						else
+						{
+								<div class="minicart-drop-total-price col" data-header-cart-total="">$0</div>
+						}
 					</div>
 					<div class="minicart-drop-actions">
 						<a href="~/assets/cart.html" class="btn btn--md btn--grey"><i class="icon-basket"></i><span>Cart Page</span></a>
@@ -428,7 +434,7 @@
 					<div class="col-lg col-xl last-mobile">
 						<div class="footer-block">
 							<div class="footer-logo">
-								<a style="width:100px;height:100px;object-fit:contain" href="~/assets/index.html" class="logo"><img src="~/assets/images/@settings["Logo"]" alt="Logo"></a>
+								<a style="width:100px;height:100px;object-fit:contain" asp-controller="home" asp-action="index" class="logo"><img src="~/assets/images/@settings["Logo"]" alt="Logo"></a>
 
 							</div>
 							<div class="collapsed-content">

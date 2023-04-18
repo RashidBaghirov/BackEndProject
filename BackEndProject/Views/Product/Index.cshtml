@@ -1,6 +1,9 @@
 ﻿@{
 	ViewData["Title"] = "Shop Page";
-	List<Product> products = ViewBag.Products;
+	List<Product> productsAz = ViewBag.ProductsAZ;
+	List<Product> productsZa = ViewBag.ProductsZA;
+	List<Product> productslow = ViewBag.ProductsLowToHigh;
+	List<Product> productshigh = ViewBag.ProductsHighToLow;
 	var page = ViewBag.CurrentPage;
 	var totalPage = ViewBag.TotalPage;
 }
@@ -31,23 +34,15 @@
 					<div class="select-wrap d-none d-md-flex">
 						<div class="select-label">SORT:</div>
 						<div class="select-wrapper select-wrapper-xxs">
-							<select class="form-control input-sm">
-								<option value="featured">Featured</option>
-								<option value="rating">Rating</option>
-								<option value="price">Price</option>
+							<select class="form-control input-sm" onchange="filterData(this.value)">
+								<option value="az">A-Z</option>
+								<option value="za">Z-A</option>
+								<option value="low">LowPrice</option>
+								<option value="high">HighPrice</option>
 							</select>
 						</div>
 					</div>
-					<div class="select-wrap d-none d-md-flex">
-						<div class="select-label">VIEW:</div>
-						<div class="select-wrapper select-wrapper-xxs">
-							<select class="form-control input-sm">
-								<option value="featured">12</option>
-								<option value="rating">36</option>
-								<option value="price">100</option>
-							</select>
-						</div>
-					</div>
+				
 					<div class="viewmode-wrap">
 						<div class="view-mode">
 							<span class="js-horview d-none d-lg-inline-flex"><i class="icon-grid"></i></span>
@@ -80,16 +75,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="sidebar-block d-filter-mobile">
-							<h3 class="mb-1">SORT BY</h3>
-							<div class="select-wrapper select-wrapper-xs">
-								<select class="form-control">
-									<option value="featured">Featured</option>
-									<option value="rating">Rating</option>
-									<option value="price">Price</option>
-								</select>
-							</div>
-						</div>
+			
 						<div class="sidebar-block filter-group-block open">
 							<div class="sidebar-block_title">
 								<span>Categories</span>
@@ -122,95 +108,11 @@
 								<span>Colors</span>
 								<span class="toggle-arrow"><span></span><span></span></span>
 							</div>
-							<div class="sidebar-block_content">
-								<ul class="color-list two-column">
-									<li class="active">
-										<a href="#" data-tooltip="Dark Red" title="Dark Red">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-red.png" alt="">
-											</span><span class="colorname">Red (87)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="Pink" title="Pink">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-pink.png" alt="">
-											</span><span class="colorname">Pink (95)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="Violet" title="Violet">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-violet.png" alt="">
-											</span><span class="colorname">Violet (18)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="Blue" title="Blue">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-blue.png" alt="">
-											</span><span class="colorname">Blue (78)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="Marine" title="Marine">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-marine.png" alt="">
-											</span><span class="colorname">Marine (45)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="Orange" title="Orange">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-orange.png" alt="">
-											</span><span class="colorname">Orange (96)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="Yellow" title="Yellow">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-yellow.png" alt="">
-											</span><span class="colorname">Yellow (55)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="Dark Yellow" title="Dark Yellow">
-											<span class="value"><img src="~/assets//colorswatch/color-darkyellow.png" alt=""></span><span class="colorname">Dark Yellow (2)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="Black"
-										   title="Black">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-black.png" alt="">
-											</span><span class="colorname">Black (15)</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" data-tooltip="White" title="White">
-											<span class="value">
-												<img src="~/assets//colorswatch/color-white.png" alt="">
-											</span><span class="colorname">White (58)</span>
-										</a>
-									</li>
-								</ul>
-							</div>
 						</div>
 						<div class="sidebar-block filter-group-block collapsed">
 							<div class="sidebar-block_title">
 								<span>Size</span>
 								<span class="toggle-arrow"><span></span><span></span></span>
-							</div>
-							<div class="sidebar-block_content">
-								<ul class="category-list two-column size-list" data-sort='["XXS","XS","S","M","L","XL","XXL","XXXL"]'>
-									<li data-value="L" class="active"><a href="#">L</a></li>
-									<li data-value="XL"><a href="#">XL</a></li>
-									<li data-value="XXS"><a href="#">XXS</a></li>
-									<li data-value="XS"><a href="#">XS</a></li>
-									<li data-value="S"><a href="#">S</a></li>
-									<li data-value="XXL"><a href="#">XXL</a></li>
-									<li data-value="XXXL"><a href="#">XXXL</a></li>
-								</ul>
 							</div>
 						</div>
 						<div class="sidebar-block filter-group-block collapsed">
@@ -218,42 +120,17 @@
 								<span>Brands</span>
 								<span class="toggle-arrow"><span></span><span></span></span>
 							</div>
-							<div class="sidebar-block_content">
-								<ul class="category-list">
-									<li><a href="#">Adidas</a></li>
-									<li><a href="#">Nike</a></li>
-									<li class="active"><a href="#">Reebok</a></li>
-									<li><a href="#">Ralph Lauren</a></li>
-									<li><a href="#">Delpozo</a></li>
-								</ul>
-							</div>
 						</div>
 						<div class="sidebar-block filter-group-block collapsed">
 							<div class="sidebar-block_title">
 								<span>Price</span>
 								<span class="toggle-arrow"><span></span><span></span></span>
 							</div>
-							<div class="sidebar-block_content">
-								<ul class="category-list">
-									<li><a href="#">$100-$200</a></li>
-									<li class="active"><a href="#">Above $200</a></li>
-									<li><a href="#">Under $100</a></li>
-								</ul>
-							</div>
 						</div>
 						<div class="sidebar-block filter-group-block collapsed">
 							<div class="sidebar-block_title">
 								<span>Popular tags</span>
 								<span class="toggle-arrow"><span></span><span></span></span>
-							</div>
-							<div class="sidebar-block_content">
-								<ul class="tags-list">
-									<li class="active"><a href="#">Jeans</a></li>
-									<li><a href="#">St.Valentine’s gift</a></li>
-									<li><a href="#">Sunglasses</a></li>
-									<li><a href="#">Discount</a></li>
-									<li><a href="#">Maxi dress</a></li>
-								</ul>
 							</div>
 						</div>
 						<a href="https://bit.ly/3eJX5XE" class="bnr image-hover-scale bnr--bottom bnr--left" data-fontratio="3.95">
@@ -275,10 +152,10 @@
 				</div>
 				<!-- /Left column -->
 				<!-- Center column -->
-				<div class="col-lg aside">
+				<div class="col-lg aside products-high d-none">
 					<div class="prd-grid-wrap">
 						<!-- Products Grid -->
-						@await Html.PartialAsync("_ProductPartial", products)
+						@await Html.PartialAsync("_ProductPartial", productshigh)
 						<div class="listing-show-more-wrap d-flex mt-4 mt-md-6 justify-content-center align-items-start">
 							<ul class="pagination mt-0">
 							@for (int i = 1; i < totalPage; i++)
@@ -292,6 +169,57 @@
 						<!-- /Products Grid -->
 					</div>
 				</div>
+				<div class="col-lg aside  products-az">
+					<div class="prd-grid-wrap">
+						<!-- Products Grid -->
+						@await Html.PartialAsync("_ProductPartial", productsAz)
+						<div class="listing-show-more-wrap d-flex mt-4 mt-md-6 justify-content-center align-items-start">
+							<ul class="pagination mt-0">
+							@for (int i = 1; i < totalPage; i++)
+								{
+									<li class="@(page==i?"active" : "")"><a asp-controller="product" asp-action="index" asp-route-page="@i">@i</a></li>
+
+								}
+								
+							</ul>
+						</div>
+						<!-- /Products Grid -->
+					</div>
+				</div>
+				<div class="col-lg aside d-none products-za">
+					<div class="prd-grid-wrap">
+						<!-- Products Grid -->
+						@await Html.PartialAsync("_ProductPartial", productsZa)
+						<div class="listing-show-more-wrap d-flex mt-4 mt-md-6 justify-content-center align-items-start">
+							<ul class="pagination mt-0">
+							@for (int i = 1; i < totalPage; i++)
+								{
+									<li class="@(page==i?"active" : "")"><a asp-controller="product" asp-action="index" asp-route-page="@i">@i</a></li>
+
+								}
+								
+							</ul>
+						</div>
+						<!-- /Products Grid -->
+					</div>
+				</div>
+				<div class="col-lg aside products-low d-none">
+					<div class="prd-grid-wrap">
+						<!-- Products Grid -->
+						@await Html.PartialAsync("_ProductPartial", productslow)
+						<div class="listing-show-more-wrap d-flex mt-4 mt-md-6 justify-content-center align-items-start">
+							<ul class="pagination mt-0">
+								@for (int i = 1; i < totalPage; i++)
+								{
+									<li class="@(page==i?"active" : "")"><a asp-controller="product" asp-action="index" asp-route-page="@i">@i</a></li>
+
+								}
+
+							</ul>
+						</div>
+						<!-- /Products Grid -->
+					</div>
+				</div>
 				<!-- /Center column -->
 			</div>
 			<!-- /Two columns -->
@@ -299,3 +227,21 @@
 	</div>
 	
 </div>
+
+@section Script{
+	<script>
+		function filterData(value) {
+			$('.col-lg.aside').addClass('d-none');
+
+			if (value === 'az') {
+				$('.col-lg.aside.products-az').removeClass('d-none');
+			} else if (value === 'za') {
+				$('.col-lg.aside.products-za').removeClass('d-none');
+			} else if (value === 'low') {
+				$('.col-lg.aside.products-low').removeClass('d-none');
+			} else if (value === 'high') {
+				$('.col-lg.aside.products-high').removeClass('d-none');
+			}
+		}
+	</script>
+}

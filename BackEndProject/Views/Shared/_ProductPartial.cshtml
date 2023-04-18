@@ -66,7 +66,9 @@
 						<div class="prd-action">
 							<div class="prd-action-left">
 								<form action="#">
-									<button class="btn js-prd-addtocart" data-product='{"name": "Leather Pegged Pants", "path":"~/assets//skins/fashion/products/product-01-1.jpg", "url":"product.html", "aspect_ratio":0.778}'>Add To Cart</button>
+									<a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">
+										<button class="btn js-prd-addtocart">Add To Cart</button>
+									</a>
 								</form>
 							</div>
 						</div>

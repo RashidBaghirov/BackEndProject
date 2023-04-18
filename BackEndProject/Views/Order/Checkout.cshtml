@@ -78,7 +78,7 @@
 								<div class="mt-2"></div>
 								<label>Address</label>
 								<div class="form-group">
-									<input asp-for="Address" class="form-control form-control--sm">
+									<input asp-for="Address" value="Hovsan" class="form-control form-control--sm">
 									<span asp-validation-for="Address" class="text-danger"></span>
 								</div>
 							</div>
@@ -157,8 +157,8 @@
 						<div class="card">
 							<div class="card-body">
 								<h3>Order Comment</h3>
-								<input asp-for="Note" class="form-control form-control--sm textarea--height-200" placeholder="Place your comment here"/>
-								<span asp-validation-for="Address" class="text-danger"></span>
+								<input asp-for="Note" class="form-control form-control--sm textarea--height-200" value="Hovsan" placeholder="Place your comment here"/>
+								<span asp-validation-for="Note" class="text-danger"></span>
 								<div class="card-text-info mt-2">
 									<p>*Savings include promotions, coupons, rueBUCKS, and shipping (if applicable).</p>
 								</div>
@@ -214,15 +214,6 @@
 						<input type="hidden" name="BasketItemVMs[@Model.BasketItemVMs.IndexOf(item)].Price" value="@item.Price" />
 					}
 					<div class="col-md-6 mt-2 mt-md-0">
-						<div class="card">
-							<div class="card-body">
-								<h3>Apply Promocode</h3>
-								<p>Got a promo code? Then you're a few randomly combined numbers & letters away from fab savings!</p>
-								<div class="form-inline mt-2">
-									<input asp-for="Note" class="form-control form-control--sm" placeholder="Promotion/Discount Code">
-								</div>
-							</div>
-						</div>
 						<div class="mt-2"></div>
 						<div class="cart-total-sm">
 							<span>Subtotal</span>

@@ -29,9 +29,22 @@ namespace BackEndProject.Controllers
 
 			ViewBag.TotalPage = Math.Ceiling((double)_context.Products.Count() / 6);
 			ViewBag.CurrentPage = page;
-			ViewBag.Products = _context.Products.Include(p => p.ProductImages)
+
+			ViewBag.ProductsAZ = _context.Products.Include(p => p.ProductImages)
 													   .Include(p => p.ProductSizeColors).ThenInclude(p => p.Color).Include(c => c.Collections)
-														.AsNoTracking().Skip((page - 1) * 6).Take(6).ToList();
+														.AsNoTracking().Skip((page - 1) * 6).Take(6).OrderByDescending(p => p.Name).ToList();
+
+			ViewBag.ProductsZA = _context.Products.Include(p => p.ProductImages)
+										   .Include(p => p.ProductSizeColors).ThenInclude(p => p.Color).Include(c => c.Collections)
+										   .AsNoTracking().Skip((page - 1) * 6).Take(6).OrderBy(p => p.Name).ToList();
+
+			ViewBag.ProductsLowToHigh = _context.Products.Include(p => p.ProductImages)
+													 .Include(p => p.ProductSizeColors).ThenInclude(p => p.Color).Include(c => c.Collections)
+													 .AsNoTracking().Skip((page - 1) * 6).Take(6).OrderBy(p => p.Price).ToList();
+			ViewBag.ProductsHighToLow = _context.Products.Include(p => p.ProductImages)
+												 .Include(p => p.ProductSizeColors).ThenInclude(p => p.Color).Include(c => c.Collections)
+												 .AsNoTracking().Skip((page - 1) * 6).Take(6).OrderByDescending(p => p.Price).ToList();
+
 
 			return View();
 		}
@@ -61,14 +74,14 @@ namespace BackEndProject.Controllers
 						  .Where(psc => psc.ProductId == id)
 						  .Select(psc => psc.Color)
 						  .Distinct()
-						  .Select(c => new { Id = c.Id, Name = c.Name })
+						  .Select(c => new { c.Id, c.Name })
 						  .ToList();
 
 			ViewBag.Sizes = _context.ProductSizeColors
 							 .Where(psc => psc.ProductId == id)
 							 .Select(psc => psc.Size)
 							 .Distinct()
-							 .Select(s => new { Id = s.Id, Name = s.Name })
+							 .Select(s => new { s.Id, s.Name })
 							 .ToList();
 
 			ViewBag.Comment = _context.Comments.ToList();
