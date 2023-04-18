@@ -3,7 +3,10 @@
 @{
 	ViewData["Title"] = "Detail Page";
 	List<Product> products = ViewBag.Products;
+	var comment = ViewBag.Comment;
 }
+
+
 
 <div class="page-content">
 	<div class="holder breadcrumbs-wrap mt-0">
@@ -483,73 +486,60 @@
 							<div class="col"><h2>CUSTOMER REVIEWS</h2></div>
 							<div class="col-18 col-md-auto mb-3 mb-md-0"><a href="#" class="review-write-link"><i class="icon-pencil"></i>Write review</a></div>
 						</div>
-						<div id="productReviewsBottom">
-							<div class="review-item">
-								<div class="review-item_rating">
-									<i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-								</div>
-								<div class="review-item_top row align-items-center">
-									<div class="col"><h5 class="review-item_author">Jaden Ngo on May 25, 2018</h5></div>
-									<div class="col-auto"><a href="#" class="review-item_report">Report as Inappropriate</a></div>
-								</div>
-								<div class="review-item_content">
-									<h4>Good ball and company</h4>
-									<p>I recently bought this ball and this is the first ball that I actually buy based on quality and material, I always been playing my friend ball and one of them recommended me this, read some review online and decided to buy it, the ball feel sticky at first but quality is nice and the hand wrote letter was awesome because it shows how much season creator actually care about their customers.</p>
-								</div>
-							</div>
-							<div class="review-item">
-								<div class="review-item_rating">
-									<i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-								</div>
-								<div class="review-item_top row align-items-center">
-									<div class="col"><h5 class="review-item_author">Jaden Ngo on May 25, 2018</h5></div>
-									<div class="col-auto"><a href="#" class="review-item_report">Report as Inappropriate</a></div>
-								</div>
-								<div class="review-item_content">
-									<h4>Good ball and company</h4>
-									<p>I recently bought this ball and this is the first ball that I actually buy based on quality and material, I always been playing my friend ball and one of them recommended me this, read some review online and decided to buy it, the ball feel sticky at first but quality is nice and the hand wrote letter was awesome because it shows how much season creator actually care about their customers.</p>
-								</div>
-							</div>
-							<div class="review-item">
-								<div class="review-item_rating">
-									<i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-								</div>
-								<div class="review-item_top row align-items-center">
-									<div class="col"><h5 class="review-item_author">Jaden Ngo on May 25, 2018</h5></div>
-									<div class="col-auto"><a href="#" class="review-item_report">Report as Inappropriate</a></div>
-								</div>
-								<div class="review-item_content">
-									<h4>Good ball and company</h4>
-									<p>I recently bought this ball and this is the first ball that I actually buy based on quality and material, I always been playing my friend ball and one of them recommended me this, read some review online and decided to buy it, the ball feel sticky at first but quality is nice and the hand wrote letter was awesome because it shows how much season creator actually care about their customers.</p>
-								</div>
-							</div>
-							<div class="review-item">
-								<div class="review-item_rating">
-									<i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-								</div>
-								<div class="review-item_top row align-items-center">
-									<div class="col"><h5 class="review-item_author">Jaden Ngo on May 25, 2018</h5></div>
-									<div class="col-auto"><a href="#" class="review-item_report">Report as Inappropriate</a></div>
-								</div>
-								<div class="review-item_content">
-									<h4>Good ball and company</h4>
-									<p>I recently bought this ball and this is the first ball that I actually buy based on quality and material, I always been playing my friend ball and one of them recommended me this, read some review online and decided to buy it, the ball feel sticky at first but quality is nice and the hand wrote letter was awesome because it shows how much season creator actually care about their customers.</p>
-								</div>
-							</div>
-							<div class="review-item">
-								<div class="review-item_rating">
-									<i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-								</div>
-								<div class="review-item_top row align-items-center">
-									<div class="col"><h5 class="review-item_author">Jaden Ngo on May 25, 2018</h5></div>
-									<div class="col-auto"><a href="#" class="review-item_report">Report as Inappropriate</a></div>
-								</div>
-								<div class="review-item_content">
-									<h4>Good ball and company</h4>
-									<p>I recently bought this ball and this is the first ball that I actually buy based on quality and material, I always been playing my friend ball and one of them recommended me this, read some review online and decided to buy it, the ball feel sticky at first but quality is nice and the hand wrote letter was awesome because it shows how much season creator actually care about their customers.</p>
-								</div>
-							</div>
-						</div>
+				<div id="productReviewsBottom">
+	@if(User.Identity.IsAuthenticated){
+		<div style="margin:50px 0">
+			<form asp-controller="Product" asp-action="AddComment" asp-route-id="@Model.Id">
+				<textarea asp-for="Comments.FirstOrDefault(c=>c.ProductId == Model.Id).Text" style="width:100%;height:150px;border:1px solid gray" type="text"></textarea>
+				<div>
+					<button id="send" class="btn">Send</button>
+				</div>
+			</form>
+		</div>
+	}
+	@foreach(Comment cmt in Model.Comments)
+	{
+		if(cmt.ProductId == Model.Id)
+		{
+		<div class="review-item">
+		<div class="review-item_rating">
+			<i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
+		</div>
+		<div class="review-item_top row align-items-center">
+			<div class="col"><h5 class="review-item_author">@cmt.User.FullName on @cmt.Date</h5></div>
+			<div class="col-auto"><a href="#" class="review-item_report">Report as Inappropriate</a></div>
+		</div>
+		<div class="review-item_content">
+			<h4>Good ball and company</h4>
+			<p>@cmt.Text</p>
+		</div>
+
+			@if(User.Identity.Name == cmt.User.UserName)
+			{
+				<button class="delete btn btn-danger">
+					Delete
+				</button>
+			
+			}
+		
+				<form asp-controller="Product" asp-action="DeleteComment" asp-route-commentId="@cmt.Id" class="deleteArea" style="display:none">
+					
+					<input asp-for="Comments.FirstOrDefault(c=>c.Id == cmt.Id).ProductId" value="@Model.Id" hidden />
+					<textarea asp-for="Comments.FirstOrDefault(c=>c.Id == cmt.Id).Text" readonly></textarea>
+					<span asp-validation-for="Comments.FirstOrDefault(c=>c.Id == cmt.Id).Text"></span>
+					<button  class="btn btn-danger">Save</button>
+			
+				</form>
+			</div>
+			<div class="review-item_content">
+			<p>
+				@cmt.Text
+			</p>
+			</div>
+		
+		}
+	}
+</div>
 					</div>
 				</div>
 			</div>
@@ -585,5 +575,15 @@ function changeColor($element) {
   $element.closest("ul").find("li").removeClass("active");
   $element.closest("li").addClass("active");
 }
+
+const deleteButtons = document.querySelectorAll('.delete');
+
+deleteButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const deleteForm = button.nextElementSibling;
+    deleteForm.style.display = 'block';
+  });
+});
+
 </script>
 			}

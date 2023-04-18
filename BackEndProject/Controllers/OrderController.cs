@@ -169,7 +169,6 @@ namespace BackEndProject.Controllers
 			{
 				return RedirectToAction("Login", "Account");
 			}
-			BasketItem item = _context.BasketItems.FirstOrDefault(i => i.ProductSizeColor == productSizeColor);
 			Basket userActiveBasket = _context.Baskets
 				.Include(b => b.User)
 				.Include(b => b.BasketItems)

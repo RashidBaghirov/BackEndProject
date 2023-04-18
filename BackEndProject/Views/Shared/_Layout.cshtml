@@ -27,6 +27,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Open%20Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<title>@ViewBag.Title</title>
 </head>
+
 <body class="has-smround-btns has-loader-bg equal-height">
 	<!--header-->
 	<header class="hdr-wrap">
@@ -50,30 +51,23 @@
 							<!-- Header Search -->
 							<div class="search_container_desktop">
 								<div class="dropdn dropdn_search dropdn_fullwidth">
-									<a href="~/assets/#" class="dropdn-link  js-dropdn-link only-icon"><i class="icon-search"></i><span class="dropdn-link-txt">Search</span></a>
-									<div class="dropdn-content">
-										<div class="container">
-											<form method="post" action="#" class="search search-off-popular">
-												<input name="search" type="text" class="search-input input-empty" placeholder="What are you looking for?">
-												<button type="submit" class="search-button"><i class="icon-search"></i></button>
-												<a asp-controller="home" asp-action="search" class="search-close js-dropdn-close"><i class="icon-close-thin"></i></a>
-											</form>
-										</div>
-									</div>
+									<a href="#basesearch" class="dropdn-link  js-dropdn-link only-icon"><i class="icon-search"></i><span class="dropdn-link-txt">Search</span></a>
+								
 								</div>
 							</div>
 							<!-- /Header Search -->
 							<!-- Header Wishlist -->
 							<div class="dropdn dropdn_wishlist">
-								<a href="~/assets/account-wishlist.html" class="dropdn-link only-icon wishlist-link ">
-									<i class="icon-heart"></i><span class="dropdn-link-txt">Wishlist</span><span class="wishlist-qty">3</span>
+								<a asp-controller="Order" asp-action="Index" class="dropdn-link only-icon wishlist-link ">
+									<i class="icon-heart"></i><span class="dropdn-link-txt">Wishlist</span></span>
 								</a>
 							</div>
 							<!-- /Header Wishlist -->
 							<!-- Header Account -->
-							<div class="dropdn dropdn_account dropdn_fullheight">
-								<a href="~/assets/#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon" data-panel="#dropdnAccount"><i class="icon-user"></i><span class="dropdn-link-txt">Account</span></a>
-							</div>
+								<div class="dropdn dropdn_account dropdn_fullheight">
+									<a asp-controller="Account" asp-action="Details" class="dropdn-link js-dropdn-link js-dropdn-link only-icon" data-panel="#dropdnAccount"><i class="icon-user"></i><span class="dropdn-link-txt">Account</span></a>
+								</div>
+							
 							<!-- /Header Account -->
 							<div class="dropdn dropdn_fullheight minicart">
 								<a href="~/assets/#" class="dropdn-link js-dropdn-link minicart-link only-icon" data-panel="#dropdnMinicart">
@@ -193,7 +187,7 @@
 									<a asp-controller="product" asp-action="index">Shop</a>
 
 								</li>
-								@*ozum ucun qeyd*@
+							
 								<li><a href="~/assets/category.html">Accessories<span class="menu-label">SALE</span></a></li>
 								<li class="mmenu-item--mega">
 									<a href="~/assets/category.html">Men</a>
@@ -397,14 +391,39 @@
 								<!-- Header Search -->
 								<div class="search_container_desktop">
 									<div class="dropdn dropdn_search dropdn_fullwidth">
-										<a href="~/assets/#" class="dropdn-link  js-dropdn-link only-icon"><i class="icon-search"></i><span class="dropdn-link-txt">Search</span></a>
+										<a href="~/assets/#" id="basesearch" class="dropdn-link  js-dropdn-link only-icon"><i class="icon-search"></i><span class="dropdn-link-txt">Search</span></a>
 										<div class="dropdn-content">
 											<div class="container">
-												<form method="get" action="#" class="search search-off-popular">
+												<form method="post" action="#" class="search search-off-popular">
 													<input name="search" type="text" class="search-input input-empty" placeholder="What are you looking for?">
 													<button type="submit" class="search-button"><i class="icon-search"></i></button>
-													<a href="~/assets/#" class="search-close js-dropdn-close"><i class="icon-close-thin"></i></a>
+													<a class="search-close js-dropdn-close"><i class="icon-close-thin"></i></a>
 												</form>
+
+												<div class="search-results"></div>
+
+												<script>
+													const searchForm = document.querySelector('.search');
+													const searchInput = searchForm.querySelector('.search-input');
+													const searchResults = document.querySelector('.search-results');
+
+													searchForm.addEventListener('submit', (e) => {
+														e.preventDefault();
+														const searchQuery = searchInput.value.trim();
+														if (searchQuery.length < 2) {
+															searchResults.innerHTML = '';
+															return;
+														}
+														fetch(`/Home/Search?search=${searchQuery}`)
+															.then(response => response.text())
+															.then(data => {
+																searchResults.innerHTML = data;
+															})
+															.catch(error => console.log(error));
+													});
+												</script>
+
+
 											</div>
 										</div>
 									</div>
@@ -412,8 +431,8 @@
 								<!-- /Header Search -->
 								<!-- Header Wishlist -->
 								<div class="dropdn dropdn_wishlist">
-									<a href="~/assets/account-wishlist.html" class="dropdn-link only-icon wishlist-link ">
-										<i class="icon-heart"></i><span class="dropdn-link-txt">Wishlist</span><span class="wishlist-qty">3</span>
+									<a asp-controller="Order" asp-action="Index" class="dropdn-link only-icon wishlist-link ">
+										<i class="icon-heart"></i><span class="dropdn-link-txt">Wishlist</span>
 									</a>
 								</div>
 								<!-- /Header Wishlist -->
@@ -472,7 +491,7 @@
 			<div class="dropdn-content-block">
 				<div class="dropdn-close"><span class="js-dropdn-close">Close</span></div>
 				<div class="minicart-drop-content js-dropdn-content-scroll">
-					@foreach (var item in baskets)
+					@foreach (BasketItemVM item in baskets)
 					{
 						Product? products = layoutService.GetProducts().FirstOrDefault(p => p.Id == item.ProductId);
 						BasketItem? bsk = basket.FirstOrDefault(p => p.ProductSizeColorId == item.ProductSizeColorId);

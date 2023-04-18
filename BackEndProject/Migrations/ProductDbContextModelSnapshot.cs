@@ -136,6 +136,36 @@ namespace BackEndProject.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("BackEndProject.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("BackEndProject.Entities.GlobalTab", b =>
                 {
                     b.Property<int>("Id")
@@ -544,9 +574,6 @@ namespace BackEndProject.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsAdmin")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -768,7 +795,7 @@ namespace BackEndProject.Migrations
                         .IsRequired();
 
                     b.HasOne("BackEndProject.Entities.ProductSizeColor", "ProductSizeColor")
-                        .WithMany()
+                        .WithMany("BasketItems")
                         .HasForeignKey("ProductSizeColorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -776,6 +803,23 @@ namespace BackEndProject.Migrations
                     b.Navigation("Basket");
 
                     b.Navigation("ProductSizeColor");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.Comment", b =>
+                {
+                    b.HasOne("BackEndProject.Entities.Product", "Product")
+                        .WithMany("Comments")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackEndProject.Entities.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BackEndProject.Entities.Order", b =>
@@ -1021,6 +1065,8 @@ namespace BackEndProject.Migrations
 
             modelBuilder.Entity("BackEndProject.Entities.Product", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("ProductCategories");
 
                     b.Navigation("ProductImages");
@@ -1028,6 +1074,11 @@ namespace BackEndProject.Migrations
                     b.Navigation("ProductSizeColors");
 
                     b.Navigation("ProductTags");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.ProductSizeColor", b =>
+                {
+                    b.Navigation("BasketItems");
                 });
 
             modelBuilder.Entity("BackEndProject.Entities.Size", b =>
@@ -1038,6 +1089,11 @@ namespace BackEndProject.Migrations
             modelBuilder.Entity("BackEndProject.Entities.Tag", b =>
                 {
                     b.Navigation("ProductTags");
+                });
+
+            modelBuilder.Entity("BackEndProject.Entities.User", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

@@ -25,10 +25,8 @@ namespace BackEndProject.Controllers
         }
         public IActionResult Search(string search)
         {
-            var query = _context.Products.AsQueryable().Where(x => x.Name.Contains(search));
-
+            var query = _context.Products.Include(p => p.ProductImages).AsQueryable().Where(x => x.Name.Contains(search));
             List<Product> products = query.OrderByDescending(x => x.Id).Take(3).ToList();
-
             return PartialView("_SearchPartial", products);
         }
 

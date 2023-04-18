@@ -1,11 +1,21 @@
 ﻿@model List<Product>
 
+<ul>
+    @foreach (var item in Model)
+    {
 
-@foreach (Product product in Model)
-{
-    <li class="list-group-item" style="margin-top:5px">
-        <a asp-action="detail" , asp-controller="product" asp-route-id="@product.Id">
-            @product.Name
-        </a>
-    </li>
-}
+		<div class="minicart-prd row">
+			<div class="minicart-prd-image image-hover-scale-circle col">
+				<a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id"><img src="~/assets/images/skins/fashion/product-page/@item.ProductImages.FirstOrDefault(x=>x.IsMain==true)?.Path" class="lazyload fade-up" alt=""></a>
+			</div>
+			<div class="minicart-prd-info col">
+				<div class="minicart-prd-tag">FOXic</div>
+				<h2 class="minicart-prd-name"><a href="~/assets/#">@item.Name</a></h2>
+				<div class="minicart-prd-price prd-price">
+					<div class="price-old">$@item.Price</div>
+					<div class="price-new">$@item.DiscountPrice</div>
+				</div>
+			</div>
+		</div>
+    }
+</ul>
