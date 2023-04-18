@@ -1,4 +1,4 @@
-﻿@model BackEndProject.ViewModel.ProductVM
+﻿@model ProductVM
 
 @section Css{
     <style>
@@ -39,7 +39,7 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="MainPhoto" class="control-label"></label>
-                <input asp-for="MainPhoto" class="form-control" / accept="image/*">
+                <input asp-for="MainPhoto" class="form-control"  accept="image/*">
                 <span asp-validation-for="MainPhoto" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -173,7 +173,7 @@ namespace BackEndProject.Controllers
 				.Include(b => b.User)
 				.Include(b => b.BasketItems)
 				.ThenInclude(i => i.ProductSizeColor)
-				.FirstOrDefault(b => b.User.Id == user.Id && !b.IsOrdered);
+				.FirstOrDefault(b => b.User.Id == user.Id && b.IsOrdered != OrderStatus.Default);
 
 			if (userActiveBasket is null)
 			{
@@ -221,7 +221,7 @@ namespace BackEndProject.Controllers
 					.Include(b => b.User)
 					.Include(b => b.BasketItems)
 					.ThenInclude(i => i.ProductSizeColor)
-					.FirstOrDefault(b => b.User.Id == user.Id && !b.IsOrdered);
+					.FirstOrDefault(b => b.User.Id == user.Id && b.IsOrdered != 0);
 				if (userActiveBasket is not null)
 				{
 					userActiveBasket.BasketItems.Remove(item);
@@ -312,13 +312,14 @@ namespace BackEndProject.Controllers
 		public async Task<IActionResult> Checkout()
 		{
 			CheckOutVM checkoutVM = new();
-
+			if (!User.Identity.IsAuthenticated)
+			{
+				return RedirectToAction("Login", "Account");
+			}
 			User user = await _userManager.FindByNameAsync(User.Identity.Name);
-			if (user is null) return View();
-
 			checkoutVM.Email = user.Email;
 			checkoutVM.FullName = user.FullName;
-			checkoutVM.Phone = user.PhoneNumber;
+
 
 			checkoutVM.BasketItemVMs = _context.BasketItems.Include(x => x.ProductSizeColor.Product).Where(x => x.Basket.User.Id == user.Id)
 														   .Select(x => new BasketItemVM
@@ -335,7 +336,6 @@ namespace BackEndProject.Controllers
 			{
 				totalPrice += item.Quantity * item.Price;
 			}
-
 			checkoutVM.TotalPrice = totalPrice;
 
 			ViewBag.Products = _context.Products.Include(p => p.ProductImages).ToList();
@@ -346,15 +346,33 @@ namespace BackEndProject.Controllers
 		[HttpPost]
 		public async Task<IActionResult> CheckOut(CheckOutVM model)
 		{
+			if (!User.Identity.IsAuthenticated)
+			{
+				return RedirectToAction("Login", "Account");
+			}
+			User user = await _userManager.GetUserAsync(User);
+			Basket basket = _context.Baskets.FirstOrDefault(x => x.User.Id == user.Id);
+
+			if (model.Note is null)
+			{
+				ModelState.AddModelError("Note", "Please Write Some Note");
+				return View();
+			}
+			if (model.Address is null)
+			{
+				ModelState.AddModelError("Address", "Please Write Address");
+				return View();
+			}
 			var order = new Order
 			{
 				FullName = model.FullName,
 				Email = model.Email,
-				Phone = model.Phone,
 				Address = model.Address,
 				Note = model.Note,
 				CreatedAt = DateTime.Now,
-				Status = model.OrderStatus,
+				Status = OrderStatus.Pending,
+				UserId = user.Id,
+				BasketId = basket.Id,
 				TotalPrice = 0,
 				OrderItems = new List<OrderItem>()
 			};
@@ -365,6 +383,7 @@ namespace BackEndProject.Controllers
 					.Include(p => p.Product)
 					.FirstOrDefaultAsync(psc => psc.Id == basketItem.ProductSizeColorId);
 
+
 				if (productSizeColor == null)
 				{
 					ModelState.AddModelError("ProductSizeColorId", "Product size color does not exist.");
@@ -374,7 +393,7 @@ namespace BackEndProject.Controllers
 				var orderItem = new OrderItem
 				{
 					SaleQuantity = basketItem.Quantity,
-					UnitPrice = productSizeColor.Product.Price,
+					UnitPrice = (decimal)productSizeColor.Product.DiscountPrice,
 					ProductSizeColorId = basketItem.ProductSizeColorId,
 					ProductSizeColor = productSizeColor,
 				};
@@ -384,7 +403,7 @@ namespace BackEndProject.Controllers
 			}
 			order.TotalPrice = totalPrice;
 			_context.Orders.Add(order);
-			await _context.SaveChangesAsync();
+			_context.SaveChanges();
 
 			return RedirectToAction("Index", "Home");
 		}

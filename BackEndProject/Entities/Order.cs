@@ -17,10 +17,6 @@ namespace BackEndProject.Entities
 		[StringLength(maximumLength: 100)]
 		public string Email { get; set; }
 
-		[Required]
-		[StringLength(maximumLength: 25)]
-		public string Phone { get; set; }
-
 		[StringLength(maximumLength: 500)]
 		public string Note { get; set; }
 

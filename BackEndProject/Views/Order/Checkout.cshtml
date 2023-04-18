@@ -25,7 +25,7 @@
 									<div class="col-sm-9">
 										<label>FullName:</label>
 										<div class="form-group">
-											<input asp-for=FullName class="form-control form-control--sm">
+											<input asp-for=FullName class="form-control form-control--sm" readonly>
 										</div>
 									</div>
 								</div>
@@ -71,7 +71,7 @@
 									<div class="col-sm-9">
 										<label>Email:</label>
 										<div class="form-group">
-											<input asp-for="Email" class="form-control form-control--sm">
+											<input asp-for="Email" class="form-control form-control--sm" readonly>
 										</div>
 									</div>
 								</div>
@@ -79,10 +79,7 @@
 								<label>Address</label>
 								<div class="form-group">
 									<input asp-for="Address" class="form-control form-control--sm">
-								</div>
-								<div class="clearfix">
-									<input id="formcheckoutCheckbox1" name="checkbox1" type="checkbox">
-									<label for="formcheckoutCheckbox1">Save address to my account</label>
+									<span asp-validation-for="Address" class="text-danger"></span>
 								</div>
 							</div>
 						</div>
@@ -132,17 +129,7 @@
 											</select>
 										</div>
 									</div>
-									<div class="col-sm-9">
-										<label>zip/postal code:</label>
-										<div class="form-group">
-											<input type="text" class="form-control form-control--sm">
-										</div>
-									</div>
-								</div>
-								<div class="mt-2"></div>
-								<label>Address 1:</label>
-								<div class="form-group">
-									<input type="text" class="form-control form-control--sm">
+								
 								</div>
 							</div>
 						</div>
@@ -171,6 +158,7 @@
 							<div class="card-body">
 								<h3>Order Comment</h3>
 								<input asp-for="Note" class="form-control form-control--sm textarea--height-200" placeholder="Place your comment here"/>
+								<span asp-validation-for="Address" class="text-danger"></span>
 								<div class="card-text-info mt-2">
 									<p>*Savings include promotions, coupons, rueBUCKS, and shipping (if applicable).</p>
 								</div>
@@ -218,6 +206,13 @@
 
 						</div>
 					</div>
+					@foreach (var item in Model.BasketItemVMs)
+					{
+						<input type="hidden" name="BasketItemVMs[@Model.BasketItemVMs.IndexOf(item)].ProductId" value="@item.ProductId" />
+						<input type="hidden" name="BasketItemVMs[@Model.BasketItemVMs.IndexOf(item)].ProductSizeColorId" value="@item.ProductSizeColorId" />
+						<input type="hidden" name="BasketItemVMs[@Model.BasketItemVMs.IndexOf(item)].Quantity" value="@item.Quantity" />
+						<input type="hidden" name="BasketItemVMs[@Model.BasketItemVMs.IndexOf(item)].Price" value="@item.Price" />
+					}
 					<div class="col-md-6 mt-2 mt-md-0">
 						<div class="card">
 							<div class="card-body">

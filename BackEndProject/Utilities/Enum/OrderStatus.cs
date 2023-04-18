@@ -2,8 +2,9 @@
 {
 	public enum OrderStatus
 	{
+		Default = 0,
 		Pending = 1,
-		Accepted,
-		Rejected
+		Accepted = 2,
+		Rejected = 3
 	}
 }
