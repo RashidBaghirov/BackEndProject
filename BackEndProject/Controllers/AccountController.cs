@@ -183,23 +183,17 @@ namespace BackEndProject.Controllers
 
 		public async Task<IActionResult> MyOrder()
 		{
-			User user = await _usermanager.FindByNameAsync(User.Identity.Name);
-			if (user == null)
-			{
-				return RedirectToAction(nameof(Login));
-			}
+			//User user = await _usermanager.FindByNameAsync(User.Identity.Name);
+			//if (user == null)
+			//{
+			//	return RedirectToAction(nameof(Login));
+			//}
+			//List<Order> orders = _context.Orders
+			//	.Include(x => x.OrderItems)
+			//	.Where(x => x.UserId == user.Id)
+			//	.ToList();
 
-			if (_context.Orders == null)
-			{
-				return RedirectToAction("Index", "Product");
-			}
-
-			List<Order> orders = _context.Orders
-				.Include(x => x.OrderItems)
-				.Where(x => x.UserId == user.Id)
-				.ToList();
-
-			return View(orders);
+			return View();
 		}
 
 	}
