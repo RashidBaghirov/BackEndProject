@@ -9,301 +9,305 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BackEndProject
 build_property.RootNamespace = BackEndProject
-build_property.ProjectDir = C:\Users\resid\OneDrive\Desktop\Exercise\BackEndProject\BackEndProject\
+build_property.ProjectDir = C:\Users\resid\OneDrive\Desktop\Exercise\BackEndProject\BackEndProject\BackEndProject\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\resid\OneDrive\Desktop\Exercise\BackEndProject\BackEndProject
+build_property.MSBuildProjectDirectory = C:\Users\resid\OneDrive\Desktop\Exercise\BackEndProject\BackEndProject\BackEndProject
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDYXRlZ29yeVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDYXRlZ29yeVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDYXRlZ29yeVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDYXRlZ29yeVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDYXRlZ29yeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xsZWN0aW9uXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xsZWN0aW9uXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xsZWN0aW9uXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xsZWN0aW9uXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Collection/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xsZWN0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xvclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xvclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xvclxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xvclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Color/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xDb2xvclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xHbG9iYWxUYWJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xHbG9iYWxUYWJcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xHbG9iYWxUYWJcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xHbG9iYWxUYWJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/GlobalTab/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xHbG9iYWxUYWJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xJbnN0cnVjdGlvblxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xJbnN0cnVjdGlvblxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xJbnN0cnVjdGlvblxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xJbnN0cnVjdGlvblxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Instruction/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xJbnN0cnVjdGlvblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Order/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Order/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xPcmRlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Order/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xPcmRlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Products/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xQcm9kdWN0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTZXR0aW5nXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTZXR0aW5nXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTZXR0aW5nXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTZXR0aW5nXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Setting/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTZXR0aW5nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Shared/_Layout.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTaXplXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTaXplXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTaXplXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTaXplXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Size/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTaXplXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTbGlkZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTbGlkZXJcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTbGlkZXJcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTbGlkZXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Slider/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xTbGlkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Create.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xUYWdcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Delete.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xUYWdcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xUYWdcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Edit.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xUYWdcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/Tag/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xUYWdcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/_ViewImports.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Areas/AdminAreas/Views/_ViewStart.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Areas/AdminAreas/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhc1xWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Account/Details.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Account/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Account/Login.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Account/MyOrder.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Account/MyOrder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxNeU9yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Account/Register.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Contact/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Home/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Order/Checkout.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Order/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ2hlY2tvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Order/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Product/Detail.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Product/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Product/Index.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Shared/_ProductPartial.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Shared/_MyOrderPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NeU9yZGVyUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Shared/_ProductPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Shared/_RelatedPartial.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Shared/_RelatedPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9SZWxhdGVkUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Shared/_SearchPartial.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Shared/_SearchPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWFyY2hQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Shared/_WishListPartial.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Shared/_WishListPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9XaXNoTGlzdFBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/_ViewImports.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/_ViewStart.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/Views/Shared/_Layout.cshtml]
+[C:/Users/resid/OneDrive/Desktop/Exercise/BackEndProject/BackEndProject/BackEndProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-pcm4zriwgw

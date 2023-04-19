@@ -1,0 +1,11 @@
+﻿@model List<Order>
+
+@foreach (var item in Model)
+{
+	<tr>
+		<td>@item.Id</td>
+		<td>@item.CreatedAt</td>
+		<td>@item.Status</td>
+		<td><span class="color">$@item.TotalPrice</span></td>
+	</tr>
+}

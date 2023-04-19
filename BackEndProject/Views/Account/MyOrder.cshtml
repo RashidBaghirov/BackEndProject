@@ -33,16 +33,8 @@
 								</tr>
 							</thead>
 							<tbody>
-				@*			@foreach (var item in Model)
-								{
-									<tr>
-										<td>@item.Id</td>
-										<td>@item.CreatedAt</td>
-										<td>@item.Status</td>
-										<td><span class="color">$@item.TotalPrice</span></td>
-									</tr>
-								}*@
-						
+
+								@await Html.PartialAsync("_MyOrderPartial", Model)
 							</tbody>
 						</table>
 					</div>

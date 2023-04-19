@@ -35,7 +35,14 @@ namespace BackEndProject.Services
 		}
 		public List<BasketItem>? GetBasketItems()
 		{
-			List<BasketItem> basket = _context.BasketItems.Include(p => p.ProductSizeColor.Product).ThenInclude(p => p.ProductImages).ToList();
+			User user = new();
+
+			if (_accessor.HttpContext.User.Identity.IsAuthenticated)
+			{
+				user = _userManager.Users.FirstOrDefault(x => x.UserName == _accessor.HttpContext.User.Identity.Name);
+			}
+
+			List<BasketItem> basket = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Where(x => x.Basket.User.Id == user.Id).ToList();
 
 			return basket;
 		}

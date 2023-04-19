@@ -351,12 +351,9 @@ namespace BackEndProject.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 			User user = await _userManager.GetUserAsync(User);
-			Basket basket = _context.Baskets.FirstOrDefault(x => x.User.Id == user.Id);
-			if (basket != null)
-			{
-				basket.IsOrdered = OrderStatus.Pending;
-				_context.SaveChanges();
-			}
+			Basket basket = new Basket { User = user, IsOrdered = OrderStatus.Pending };
+			_context.Baskets.Add(basket);
+			_context.SaveChanges();
 
 
 			var order = new Order
