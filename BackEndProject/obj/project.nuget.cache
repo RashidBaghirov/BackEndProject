@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T3cuUkt147V2w5/ZzGUbaQtGmO6L9tNpHkZxf9flwINJMgL1wp8jTnWWpqOMtrdnUbIFLICIxrPLGDfoHT8i+w==",
+  "dgSpecHash": "9yPU2H8a9uRN4i4QfHG+N9r5kc1mnSBW2AlPeDKrd6W3EBDlWH7hlYSWjOCXdr92oy5DeCoxqwspFsHKetNXhQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\resid\\OneDrive\\Desktop\\Exercise\\BackEndProject\\BackEndProject\\BackEndProject\\BackEndProject.csproj",
+  "projectFilePath": "C:\\Users\\resid\\OneDrive\\Desktop\\Exercise\\BackEndProject\\BackEndProject\\BackEndProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\resid\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\resid\\.nuget\\packages\\mailkit\\3.6.0\\mailkit.3.6.0.nupkg.sha512",

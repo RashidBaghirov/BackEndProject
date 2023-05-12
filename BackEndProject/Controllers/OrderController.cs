@@ -181,6 +181,7 @@ namespace BackEndProject.Controllers
 				{
 					User = user,
 					BasketItems = new List<BasketItem>(),
+					IsOrdered = OrderStatus.Default
 				};
 				_context.Baskets.Add(userActiveBasket);
 			}
@@ -308,7 +309,6 @@ namespace BackEndProject.Controllers
 
 			return RedirectToAction(nameof(Index));
 		}
-
 		public async Task<IActionResult> Checkout()
 		{
 			CheckOutVM checkoutVM = new();
@@ -320,15 +320,16 @@ namespace BackEndProject.Controllers
 			checkoutVM.Email = user.Email;
 			checkoutVM.FullName = user.FullName;
 
-
-			checkoutVM.BasketItemVMs = _context.BasketItems.Include(x => x.ProductSizeColor.Product).Where(x => x.Basket.User.Id == user.Id)
-														   .Select(x => new BasketItemVM
-														   {
-															   ProductId = x.ProductSizeColor.ProductId,
-															   ProductSizeColorId = x.ProductSizeColorId,
-															   Quantity = x.SaleQuantity,
-															   Price = x.UnitPrice
-														   }).ToList();
+			checkoutVM.BasketItemVMs = _context.BasketItems
+				.Include(x => x.ProductSizeColor.Product)
+				.Where(x => x.Basket.User.Id == user.Id)
+				.Select(x => new BasketItemVM
+				{
+					ProductId = x.ProductSizeColor.ProductId,
+					ProductSizeColorId = x.ProductSizeColorId,
+					Quantity = x.SaleQuantity,
+					Price = x.UnitPrice
+				}).ToList();
 
 			decimal totalPrice = 0;
 
@@ -342,7 +343,6 @@ namespace BackEndProject.Controllers
 			return View(checkoutVM);
 		}
 
-
 		[HttpPost]
 		public async Task<IActionResult> CheckOut(CheckOutVM model)
 		{
@@ -350,11 +350,12 @@ namespace BackEndProject.Controllers
 			{
 				return RedirectToAction("Login", "Account");
 			}
-			User user = await _userManager.GetUserAsync(User);
-			Basket basket = new Basket { User = user, IsOrdered = OrderStatus.Pending };
-			_context.Baskets.Add(basket);
-			_context.SaveChanges();
 
+			User user = await _userManager.GetUserAsync(User);
+
+			Basket basket = new() { User = user, IsOrdered = OrderStatus.Default };
+			_context.Baskets.Add(basket);
+			await _context.SaveChangesAsync();
 
 			var order = new Order
 			{
@@ -369,16 +370,18 @@ namespace BackEndProject.Controllers
 				TotalPrice = 0,
 				OrderItems = new List<OrderItem>()
 			};
+
 			if (model.Note is null)
 			{
-				ModelState.AddModelError("Note", "Please Write Some Note");
+				ModelState.AddModelError("Note", "Please write some note.");
 				return View();
 			}
 			if (model.Address is null)
 			{
-				ModelState.AddModelError("Address", "Please Write Address");
+				ModelState.AddModelError("Address", "Please write address.");
 				return View();
 			}
+
 			decimal totalPrice = 0;
 			foreach (BasketItemVM basketItem in model.BasketItemVMs)
 			{
@@ -386,10 +389,15 @@ namespace BackEndProject.Controllers
 					.Include(p => p.Product)
 					.FirstOrDefaultAsync(psc => psc.Id == basketItem.ProductSizeColorId);
 
-
 				if (productSizeColor == null)
 				{
 					ModelState.AddModelError("ProductSizeColorId", "Product size color does not exist.");
+					return View(model);
+				}
+
+				if (basketItem.Quantity > productSizeColor.Quantity)
+				{
+					ModelState.AddModelError("Quantity", "The selected quantity is not available in stock.");
 					return View(model);
 				}
 
@@ -401,17 +409,20 @@ namespace BackEndProject.Controllers
 					ProductSizeColor = productSizeColor,
 				};
 				order.OrderItems.Add(orderItem);
+
 				decimal itemTotalPrice = orderItem.UnitPrice * orderItem.SaleQuantity;
 				totalPrice += itemTotalPrice;
+
+				productSizeColor.Quantity -= basketItem.Quantity;
 			}
 			order.TotalPrice = totalPrice;
+
 			_context.Orders.Add(order);
-			_context.SaveChanges();
+			_context.BasketItems.RemoveRange(_context.BasketItems.Where(x => x.Basket.User.Id == user.Id));
+			await _context.SaveChangesAsync();
 
 			return RedirectToAction("Index", "Home");
 		}
-
-
 
 	}
 }

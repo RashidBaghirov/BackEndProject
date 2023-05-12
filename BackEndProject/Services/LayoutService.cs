@@ -1,5 +1,6 @@
 ﻿using BackEndProject.DAL;
 using BackEndProject.Entities;
+using BackEndProject.Utilities.Enum;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -42,7 +43,7 @@ namespace BackEndProject.Services
 				user = _userManager.Users.FirstOrDefault(x => x.UserName == _accessor.HttpContext.User.Identity.Name);
 			}
 
-			List<BasketItem> basket = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Where(x => x.Basket.User.Id == user.Id).ToList();
+			List<BasketItem> basket = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Include(p => p.Basket).Where(x => x.Basket.User.Id == user.Id && x.Basket.IsOrdered == OrderStatus.Default).ToList();
 
 			return basket;
 		}
@@ -59,7 +60,7 @@ namespace BackEndProject.Services
 				user = _userManager.Users.FirstOrDefault(x => x.UserName == _accessor.HttpContext.User.Identity.Name);
 			}
 
-			List<BasketItem> basketItems = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Where(x => x.Basket.User.Id == user.Id).ToList();
+			List<BasketItem> basketItems = _context.BasketItems.Include(x => x.ProductSizeColor.Product).ThenInclude(x => x.ProductImages).Where(x => x.Basket.User.Id == user.Id && x.Basket.IsOrdered == OrderStatus.Default).ToList();
 			items = basketItems.Select(x => new BasketItemVM
 			{
 				ProductId = x.ProductSizeColor.ProductId,

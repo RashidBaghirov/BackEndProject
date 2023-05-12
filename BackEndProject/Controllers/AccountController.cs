@@ -16,12 +16,12 @@ namespace BackEndProject.Controllers
 		private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly ProductDbContext _context;
 
-		public AccountController(UserManager<User> usermanager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, ProductDbContext _context)
+		public AccountController(UserManager<User> usermanager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, ProductDbContext context)
 		{
 			_usermanager = usermanager;
 			_signInManager = signInManager;
 			_roleManager = roleManager;
-			_context = _context;
+			_context = context;
 		}
 
 		public IActionResult Register()
@@ -183,17 +183,17 @@ namespace BackEndProject.Controllers
 
 		public async Task<IActionResult> MyOrder()
 		{
-			//User user = await _usermanager.FindByNameAsync(User.Identity.Name);
-			//if (user == null)
-			//{
-			//	return RedirectToAction(nameof(Login));
-			//}
-			//List<Order> orders = _context.Orders
-			//	.Include(x => x.OrderItems)
-			//	.Where(x => x.UserId == user.Id)
-			//	.ToList();
+			User user = await _usermanager.FindByNameAsync(User.Identity.Name);
+			if (user == null)
+			{
+				return RedirectToAction(nameof(Login));
+			}
+			List<Order> orders = _context.Orders
+				.Include(x => x.OrderItems)
+				.Where(x => x.UserId == user.Id)
+				.ToList();
 
-			return View();
+			return View(orders);
 		}
 
 	}
